@@ -3,8 +3,8 @@ package respjson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apijson"
-	rj "github.com/stainless-sdks/midbound-cloud-go/packages/respjson"
+	"github.com/Midbound/cloud-sdk-go/internal/apijson"
+	rj "github.com/Midbound/cloud-sdk-go/packages/respjson"
 	"reflect"
 	"testing"
 )

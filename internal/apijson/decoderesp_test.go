@@ -2,8 +2,8 @@ package apijson_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apijson"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/respjson"
+	"github.com/Midbound/cloud-sdk-go/internal/apijson"
+	"github.com/Midbound/cloud-sdk-go/packages/respjson"
 	"testing"
 )
 

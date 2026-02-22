@@ -1,8 +1,8 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/internal/encoding/json/sentinel"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/internal/encoding/json/sentinel"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
 	"reflect"
 	"slices"
 	"testing"

@@ -8,8 +8,8 @@ import (
 	"os"
 	"slices"
 
-	"github.com/stainless-sdks/midbound-cloud-go/internal/requestconfig"
-	"github.com/stainless-sdks/midbound-cloud-go/option"
+	"github.com/Midbound/cloud-sdk-go/internal/requestconfig"
+	"github.com/Midbound/cloud-sdk-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with

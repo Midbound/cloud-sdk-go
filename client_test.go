@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/midbound-cloud-go"
-	"github.com/stainless-sdks/midbound-cloud-go/internal"
-	"github.com/stainless-sdks/midbound-cloud-go/option"
+	"github.com/Midbound/cloud-sdk-go"
+	"github.com/Midbound/cloud-sdk-go/internal"
+	"github.com/Midbound/cloud-sdk-go/option"
 )
 
 type closureTransport struct {

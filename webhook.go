@@ -8,11 +8,11 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apijson"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/requestconfig"
-	"github.com/stainless-sdks/midbound-cloud-go/option"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/respjson"
-	"github.com/stainless-sdks/midbound-cloud-go/shared/constant"
+	"github.com/Midbound/cloud-sdk-go/internal/apijson"
+	"github.com/Midbound/cloud-sdk-go/internal/requestconfig"
+	"github.com/Midbound/cloud-sdk-go/option"
+	"github.com/Midbound/cloud-sdk-go/packages/respjson"
+	"github.com/Midbound/cloud-sdk-go/shared/constant"
 	standardwebhooks "github.com/standard-webhooks/standard-webhooks/libraries/go"
 )
 

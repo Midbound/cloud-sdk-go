@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/midbound-cloud-go
+module github.com/Midbound/cloud-sdk-go
 
 go 1.22
 
