@@ -1,7 +1,7 @@
 package midboundcloud
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
 	"io"
 	"time"
 )

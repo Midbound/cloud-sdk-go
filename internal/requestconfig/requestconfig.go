@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/midbound-cloud-go/internal"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apierror"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apiform"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apiquery"
+	"github.com/Midbound/cloud-sdk-go/internal"
+	"github.com/Midbound/cloud-sdk-go/internal/apierror"
+	"github.com/Midbound/cloud-sdk-go/internal/apiform"
+	"github.com/Midbound/cloud-sdk-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

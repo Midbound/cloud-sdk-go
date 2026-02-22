@@ -14,7 +14,7 @@ import (
 	"encoding"
 	"encoding/base64"
 	"fmt"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/encoding/json/shims"
+	"github.com/Midbound/cloud-sdk-go/internal/encoding/json/shims"
 	"reflect"
 	"strconv"
 	"strings"

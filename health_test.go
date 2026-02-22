@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stainless-sdks/midbound-cloud-go"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/testutil"
-	"github.com/stainless-sdks/midbound-cloud-go/option"
+	"github.com/Midbound/cloud-sdk-go"
+	"github.com/Midbound/cloud-sdk-go/internal/testutil"
+	"github.com/Midbound/cloud-sdk-go/option"
 )
 
 func TestHealthCheck(t *testing.T) {

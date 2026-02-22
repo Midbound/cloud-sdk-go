@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	shimjson "github.com/stainless-sdks/midbound-cloud-go/internal/encoding/json"
+	shimjson "github.com/Midbound/cloud-sdk-go/internal/encoding/json"
 
 	"github.com/tidwall/sjson"
 )

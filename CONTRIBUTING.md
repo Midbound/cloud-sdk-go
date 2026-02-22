@@ -41,7 +41,7 @@ To use a local version of this library from source in another project, edit the 
 directive. This can be done through the CLI with the following:
 
 ```sh
-$ go mod edit -replace github.com/stainless-sdks/midbound-cloud-go=/path/to/midbound-cloud-go
+$ go mod edit -replace github.com/Midbound/cloud-sdk-go=/path/to/cloud-sdk-go
 ```
 
 ## Running tests
