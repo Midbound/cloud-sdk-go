@@ -3,8 +3,8 @@ package apijson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apijson"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/internal/apijson"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
 	"reflect"
 	"testing"
 )

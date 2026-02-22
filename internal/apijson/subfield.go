@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/packages/respjson"
+	"github.com/Midbound/cloud-sdk-go/packages/respjson"
 	"reflect"
 )
 

@@ -2,7 +2,7 @@
 package json
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/internal/encoding/json/shims"
+	"github.com/Midbound/cloud-sdk-go/internal/encoding/json/shims"
 	"reflect"
 	"time"
 )

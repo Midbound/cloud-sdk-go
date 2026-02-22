@@ -3,8 +3,8 @@
 package midboundcloud
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/internal/apierror"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/internal/apierror"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
 )
 
 // aliased to make [param.APIUnion] private when embedding

@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/respjson"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

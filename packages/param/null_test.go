@@ -2,7 +2,7 @@ package param_test
 
 import (
 	"encoding/json"
-	"github.com/stainless-sdks/midbound-cloud-go/packages/param"
+	"github.com/Midbound/cloud-sdk-go/packages/param"
 	"testing"
 )
 
