@@ -72,12 +72,12 @@ func (r *WebhookService) UnwrapUnsafe(payload []byte, opts ...option.RequestOpti
 
 type IdentityResolvedWebhookEvent struct {
 	// Unique event identifier
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// Unix timestamp (milliseconds) when the event was created
-	Created int64                            `json:"created,required"`
-	Data    IdentityResolvedWebhookEventData `json:"data,required"`
+	Created int64                            `json:"created" api:"required"`
+	Data    IdentityResolvedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityResolved `json:"type,required"`
+	Type constant.IdentityResolved `json:"type" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -96,9 +96,9 @@ func (r *IdentityResolvedWebhookEvent) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityResolvedWebhookEventData struct {
-	Attribution IdentityResolvedWebhookEventDataAttribution `json:"attribution,required"`
-	Identity    IdentityResolvedWebhookEventDataIdentity    `json:"identity,required"`
-	Session     IdentityResolvedWebhookEventDataSession     `json:"session,required"`
+	Attribution IdentityResolvedWebhookEventDataAttribution `json:"attribution" api:"required"`
+	Identity    IdentityResolvedWebhookEventDataIdentity    `json:"identity" api:"required"`
+	Session     IdentityResolvedWebhookEventDataSession     `json:"session" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Attribution respjson.Field
@@ -116,13 +116,13 @@ func (r *IdentityResolvedWebhookEventData) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityResolvedWebhookEventDataAttribution struct {
-	PixelID string `json:"pixelId,required"`
+	PixelID string `json:"pixelId" api:"required"`
 	// Any of "jNNdd", "OMzN4".
-	Prid      string `json:"prid,required"`
-	SessionID string `json:"sessionId,required"`
+	Prid      string `json:"prid" api:"required"`
+	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
-	Type string `json:"type,required"`
-	Vid  string `json:"vid,required"`
+	Type string `json:"type" api:"required"`
+	Vid  string `json:"vid" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		PixelID     respjson.Field
@@ -142,12 +142,12 @@ func (r *IdentityResolvedWebhookEventDataAttribution) UnmarshalJSON(data []byte)
 }
 
 type IdentityResolvedWebhookEventDataIdentity struct {
-	Demographics IdentityResolvedWebhookEventDataIdentityDemographics `json:"demographics,required"`
-	Emails       []IdentityResolvedWebhookEventDataIdentityEmail      `json:"emails,required"`
-	LinkedinURL  string                                               `json:"linkedinUrl,required"`
-	Location     IdentityResolvedWebhookEventDataIdentityLocation     `json:"location,required"`
-	Phones       []string                                             `json:"phones,required"`
-	Professional IdentityResolvedWebhookEventDataIdentityProfessional `json:"professional,required"`
+	Demographics IdentityResolvedWebhookEventDataIdentityDemographics `json:"demographics" api:"required"`
+	Emails       []IdentityResolvedWebhookEventDataIdentityEmail      `json:"emails" api:"required"`
+	LinkedinURL  string                                               `json:"linkedinUrl" api:"required"`
+	Location     IdentityResolvedWebhookEventDataIdentityLocation     `json:"location" api:"required"`
+	Phones       []string                                             `json:"phones" api:"required"`
+	Professional IdentityResolvedWebhookEventDataIdentityProfessional `json:"professional" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Demographics respjson.Field
@@ -168,11 +168,11 @@ func (r *IdentityResolvedWebhookEventDataIdentity) UnmarshalJSON(data []byte) er
 }
 
 type IdentityResolvedWebhookEventDataIdentityDemographics struct {
-	FirstName   string `json:"firstName,required"`
-	HasChildren bool   `json:"hasChildren,required"`
-	IsHomeowner bool   `json:"isHomeowner,required"`
-	IsMarried   bool   `json:"isMarried,required"`
-	LastName    string `json:"lastName,required"`
+	FirstName   string `json:"firstName" api:"required"`
+	HasChildren bool   `json:"hasChildren" api:"required"`
+	IsHomeowner bool   `json:"isHomeowner" api:"required"`
+	IsMarried   bool   `json:"isMarried" api:"required"`
+	LastName    string `json:"lastName" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		FirstName   respjson.Field
@@ -193,8 +193,8 @@ func (r *IdentityResolvedWebhookEventDataIdentityDemographics) UnmarshalJSON(dat
 
 type IdentityResolvedWebhookEventDataIdentityEmail struct {
 	// Any of "personal", "professional".
-	Type  string `json:"type,required"`
-	Value string `json:"value,required"`
+	Type  string `json:"type" api:"required"`
+	Value string `json:"value" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type        respjson.Field
@@ -211,9 +211,9 @@ func (r *IdentityResolvedWebhookEventDataIdentityEmail) UnmarshalJSON(data []byt
 }
 
 type IdentityResolvedWebhookEventDataIdentityLocation struct {
-	City    string `json:"city,required"`
-	Country string `json:"country,required"`
-	State   string `json:"state,required"`
+	City    string `json:"city" api:"required"`
+	Country string `json:"country" api:"required"`
+	State   string `json:"state" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		City        respjson.Field
@@ -231,8 +231,8 @@ func (r *IdentityResolvedWebhookEventDataIdentityLocation) UnmarshalJSON(data []
 }
 
 type IdentityResolvedWebhookEventDataIdentityProfessional struct {
-	CompanyName string `json:"companyName,required"`
-	JobTitle    string `json:"jobTitle,required"`
+	CompanyName string `json:"companyName" api:"required"`
+	JobTitle    string `json:"jobTitle" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CompanyName respjson.Field
@@ -249,22 +249,22 @@ func (r *IdentityResolvedWebhookEventDataIdentityProfessional) UnmarshalJSON(dat
 }
 
 type IdentityResolvedWebhookEventDataSession struct {
-	CreatedAt    float64                                        `json:"createdAt,required"`
-	EndedAt      float64                                        `json:"endedAt,required"`
-	Fbclid       string                                         `json:"fbclid,required"`
-	Gclid        string                                         `json:"gclid,required"`
-	LandingPage  string                                         `json:"landingPage,required"`
-	LandingTitle string                                         `json:"landingTitle,required"`
-	Network      IdentityResolvedWebhookEventDataSessionNetwork `json:"network,required"`
-	Pid          string                                         `json:"pid,required"`
-	Referrer     string                                         `json:"referrer,required"`
-	Screen       IdentityResolvedWebhookEventDataSessionScreen  `json:"screen,required"`
-	Sid          string                                         `json:"sid,required"`
-	Tenant       string                                         `json:"tenant,required"`
-	Timezone     string                                         `json:"timezone,required"`
-	UserAgent    string                                         `json:"userAgent,required"`
-	Utm          IdentityResolvedWebhookEventDataSessionUtm     `json:"utm,required"`
-	Vid          string                                         `json:"vid,required"`
+	CreatedAt    float64                                        `json:"createdAt" api:"required"`
+	EndedAt      float64                                        `json:"endedAt" api:"required"`
+	Fbclid       string                                         `json:"fbclid" api:"required"`
+	Gclid        string                                         `json:"gclid" api:"required"`
+	LandingPage  string                                         `json:"landingPage" api:"required"`
+	LandingTitle string                                         `json:"landingTitle" api:"required"`
+	Network      IdentityResolvedWebhookEventDataSessionNetwork `json:"network" api:"required"`
+	Pid          string                                         `json:"pid" api:"required"`
+	Referrer     string                                         `json:"referrer" api:"required"`
+	Screen       IdentityResolvedWebhookEventDataSessionScreen  `json:"screen" api:"required"`
+	Sid          string                                         `json:"sid" api:"required"`
+	Tenant       string                                         `json:"tenant" api:"required"`
+	Timezone     string                                         `json:"timezone" api:"required"`
+	UserAgent    string                                         `json:"userAgent" api:"required"`
+	Utm          IdentityResolvedWebhookEventDataSessionUtm     `json:"utm" api:"required"`
+	Vid          string                                         `json:"vid" api:"required"`
 	Options      map[string]any                                 `json:"options"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -297,20 +297,20 @@ func (r *IdentityResolvedWebhookEventDataSession) UnmarshalJSON(data []byte) err
 }
 
 type IdentityResolvedWebhookEventDataSessionNetwork struct {
-	Asn           IdentityResolvedWebhookEventDataSessionNetworkAsn           `json:"asn,required"`
-	BotManagement IdentityResolvedWebhookEventDataSessionNetworkBotManagement `json:"botManagement,required"`
-	City          string                                                      `json:"city,required"`
-	Colo          string                                                      `json:"colo,required"`
-	Continent     string                                                      `json:"continent,required"`
-	Country       string                                                      `json:"country,required"`
-	IP            string                                                      `json:"ip,required"`
-	IsEu          bool                                                        `json:"isEU,required"`
-	Latitude      string                                                      `json:"latitude,required"`
-	Longitude     string                                                      `json:"longitude,required"`
-	MetroCode     string                                                      `json:"metroCode,required"`
-	PostalCode    string                                                      `json:"postalCode,required"`
-	Region        string                                                      `json:"region,required"`
-	RegionCode    string                                                      `json:"regionCode,required"`
+	Asn           IdentityResolvedWebhookEventDataSessionNetworkAsn           `json:"asn" api:"required"`
+	BotManagement IdentityResolvedWebhookEventDataSessionNetworkBotManagement `json:"botManagement" api:"required"`
+	City          string                                                      `json:"city" api:"required"`
+	Colo          string                                                      `json:"colo" api:"required"`
+	Continent     string                                                      `json:"continent" api:"required"`
+	Country       string                                                      `json:"country" api:"required"`
+	IP            string                                                      `json:"ip" api:"required"`
+	IsEu          bool                                                        `json:"isEU" api:"required"`
+	Latitude      string                                                      `json:"latitude" api:"required"`
+	Longitude     string                                                      `json:"longitude" api:"required"`
+	MetroCode     string                                                      `json:"metroCode" api:"required"`
+	PostalCode    string                                                      `json:"postalCode" api:"required"`
+	Region        string                                                      `json:"region" api:"required"`
+	RegionCode    string                                                      `json:"regionCode" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Asn           respjson.Field
@@ -339,8 +339,8 @@ func (r *IdentityResolvedWebhookEventDataSessionNetwork) UnmarshalJSON(data []by
 }
 
 type IdentityResolvedWebhookEventDataSessionNetworkAsn struct {
-	Code float64 `json:"code,required"`
-	Name string  `json:"name,required"`
+	Code float64 `json:"code" api:"required"`
+	Name string  `json:"name" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -357,10 +357,10 @@ func (r *IdentityResolvedWebhookEventDataSessionNetworkAsn) UnmarshalJSON(data [
 }
 
 type IdentityResolvedWebhookEventDataSessionNetworkBotManagement struct {
-	CorporateProxy      bool    `json:"corporateProxy,required"`
-	Score               float64 `json:"score,required"`
-	VerifiedBot         bool    `json:"verifiedBot,required"`
-	VerifiedBotCategory string  `json:"verifiedBotCategory,required"`
+	CorporateProxy      bool    `json:"corporateProxy" api:"required"`
+	Score               float64 `json:"score" api:"required"`
+	VerifiedBot         bool    `json:"verifiedBot" api:"required"`
+	VerifiedBotCategory string  `json:"verifiedBotCategory" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CorporateProxy      respjson.Field
@@ -381,8 +381,8 @@ func (r *IdentityResolvedWebhookEventDataSessionNetworkBotManagement) UnmarshalJ
 }
 
 type IdentityResolvedWebhookEventDataSessionScreen struct {
-	Height float64 `json:"height,required"`
-	Width  float64 `json:"width,required"`
+	Height float64 `json:"height" api:"required"`
+	Width  float64 `json:"width" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
@@ -399,11 +399,11 @@ func (r *IdentityResolvedWebhookEventDataSessionScreen) UnmarshalJSON(data []byt
 }
 
 type IdentityResolvedWebhookEventDataSessionUtm struct {
-	Campaign string `json:"campaign,required"`
-	Content  string `json:"content,required"`
-	Medium   string `json:"medium,required"`
-	Source   string `json:"source,required"`
-	Term     string `json:"term,required"`
+	Campaign string `json:"campaign" api:"required"`
+	Content  string `json:"content" api:"required"`
+	Medium   string `json:"medium" api:"required"`
+	Source   string `json:"source" api:"required"`
+	Term     string `json:"term" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Campaign    respjson.Field
@@ -424,12 +424,12 @@ func (r *IdentityResolvedWebhookEventDataSessionUtm) UnmarshalJSON(data []byte) 
 
 type IdentityQualifiedWebhookEvent struct {
 	// Unique event identifier
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// Unix timestamp (milliseconds) when the event was created
-	Created int64                             `json:"created,required"`
-	Data    IdentityQualifiedWebhookEventData `json:"data,required"`
+	Created int64                             `json:"created" api:"required"`
+	Data    IdentityQualifiedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityQualified `json:"type,required"`
+	Type constant.IdentityQualified `json:"type" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -448,9 +448,9 @@ func (r *IdentityQualifiedWebhookEvent) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityQualifiedWebhookEventData struct {
-	Attribution IdentityQualifiedWebhookEventDataAttribution `json:"attribution,required"`
-	Identity    IdentityQualifiedWebhookEventDataIdentity    `json:"identity,required"`
-	Session     IdentityQualifiedWebhookEventDataSession     `json:"session,required"`
+	Attribution IdentityQualifiedWebhookEventDataAttribution `json:"attribution" api:"required"`
+	Identity    IdentityQualifiedWebhookEventDataIdentity    `json:"identity" api:"required"`
+	Session     IdentityQualifiedWebhookEventDataSession     `json:"session" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Attribution respjson.Field
@@ -468,13 +468,13 @@ func (r *IdentityQualifiedWebhookEventData) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityQualifiedWebhookEventDataAttribution struct {
-	PixelID string `json:"pixelId,required"`
+	PixelID string `json:"pixelId" api:"required"`
 	// Any of "jNNdd", "OMzN4".
-	Prid      string `json:"prid,required"`
-	SessionID string `json:"sessionId,required"`
+	Prid      string `json:"prid" api:"required"`
+	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
-	Type string `json:"type,required"`
-	Vid  string `json:"vid,required"`
+	Type string `json:"type" api:"required"`
+	Vid  string `json:"vid" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		PixelID     respjson.Field
@@ -494,12 +494,12 @@ func (r *IdentityQualifiedWebhookEventDataAttribution) UnmarshalJSON(data []byte
 }
 
 type IdentityQualifiedWebhookEventDataIdentity struct {
-	Demographics IdentityQualifiedWebhookEventDataIdentityDemographics `json:"demographics,required"`
-	Emails       []IdentityQualifiedWebhookEventDataIdentityEmail      `json:"emails,required"`
-	LinkedinURL  string                                                `json:"linkedinUrl,required"`
-	Location     IdentityQualifiedWebhookEventDataIdentityLocation     `json:"location,required"`
-	Phones       []string                                              `json:"phones,required"`
-	Professional IdentityQualifiedWebhookEventDataIdentityProfessional `json:"professional,required"`
+	Demographics IdentityQualifiedWebhookEventDataIdentityDemographics `json:"demographics" api:"required"`
+	Emails       []IdentityQualifiedWebhookEventDataIdentityEmail      `json:"emails" api:"required"`
+	LinkedinURL  string                                                `json:"linkedinUrl" api:"required"`
+	Location     IdentityQualifiedWebhookEventDataIdentityLocation     `json:"location" api:"required"`
+	Phones       []string                                              `json:"phones" api:"required"`
+	Professional IdentityQualifiedWebhookEventDataIdentityProfessional `json:"professional" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Demographics respjson.Field
@@ -520,11 +520,11 @@ func (r *IdentityQualifiedWebhookEventDataIdentity) UnmarshalJSON(data []byte) e
 }
 
 type IdentityQualifiedWebhookEventDataIdentityDemographics struct {
-	FirstName   string `json:"firstName,required"`
-	HasChildren bool   `json:"hasChildren,required"`
-	IsHomeowner bool   `json:"isHomeowner,required"`
-	IsMarried   bool   `json:"isMarried,required"`
-	LastName    string `json:"lastName,required"`
+	FirstName   string `json:"firstName" api:"required"`
+	HasChildren bool   `json:"hasChildren" api:"required"`
+	IsHomeowner bool   `json:"isHomeowner" api:"required"`
+	IsMarried   bool   `json:"isMarried" api:"required"`
+	LastName    string `json:"lastName" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		FirstName   respjson.Field
@@ -545,8 +545,8 @@ func (r *IdentityQualifiedWebhookEventDataIdentityDemographics) UnmarshalJSON(da
 
 type IdentityQualifiedWebhookEventDataIdentityEmail struct {
 	// Any of "personal", "professional".
-	Type  string `json:"type,required"`
-	Value string `json:"value,required"`
+	Type  string `json:"type" api:"required"`
+	Value string `json:"value" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type        respjson.Field
@@ -563,9 +563,9 @@ func (r *IdentityQualifiedWebhookEventDataIdentityEmail) UnmarshalJSON(data []by
 }
 
 type IdentityQualifiedWebhookEventDataIdentityLocation struct {
-	City    string `json:"city,required"`
-	Country string `json:"country,required"`
-	State   string `json:"state,required"`
+	City    string `json:"city" api:"required"`
+	Country string `json:"country" api:"required"`
+	State   string `json:"state" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		City        respjson.Field
@@ -583,8 +583,8 @@ func (r *IdentityQualifiedWebhookEventDataIdentityLocation) UnmarshalJSON(data [
 }
 
 type IdentityQualifiedWebhookEventDataIdentityProfessional struct {
-	CompanyName string `json:"companyName,required"`
-	JobTitle    string `json:"jobTitle,required"`
+	CompanyName string `json:"companyName" api:"required"`
+	JobTitle    string `json:"jobTitle" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CompanyName respjson.Field
@@ -601,22 +601,22 @@ func (r *IdentityQualifiedWebhookEventDataIdentityProfessional) UnmarshalJSON(da
 }
 
 type IdentityQualifiedWebhookEventDataSession struct {
-	CreatedAt    float64                                         `json:"createdAt,required"`
-	EndedAt      float64                                         `json:"endedAt,required"`
-	Fbclid       string                                          `json:"fbclid,required"`
-	Gclid        string                                          `json:"gclid,required"`
-	LandingPage  string                                          `json:"landingPage,required"`
-	LandingTitle string                                          `json:"landingTitle,required"`
-	Network      IdentityQualifiedWebhookEventDataSessionNetwork `json:"network,required"`
-	Pid          string                                          `json:"pid,required"`
-	Referrer     string                                          `json:"referrer,required"`
-	Screen       IdentityQualifiedWebhookEventDataSessionScreen  `json:"screen,required"`
-	Sid          string                                          `json:"sid,required"`
-	Tenant       string                                          `json:"tenant,required"`
-	Timezone     string                                          `json:"timezone,required"`
-	UserAgent    string                                          `json:"userAgent,required"`
-	Utm          IdentityQualifiedWebhookEventDataSessionUtm     `json:"utm,required"`
-	Vid          string                                          `json:"vid,required"`
+	CreatedAt    float64                                         `json:"createdAt" api:"required"`
+	EndedAt      float64                                         `json:"endedAt" api:"required"`
+	Fbclid       string                                          `json:"fbclid" api:"required"`
+	Gclid        string                                          `json:"gclid" api:"required"`
+	LandingPage  string                                          `json:"landingPage" api:"required"`
+	LandingTitle string                                          `json:"landingTitle" api:"required"`
+	Network      IdentityQualifiedWebhookEventDataSessionNetwork `json:"network" api:"required"`
+	Pid          string                                          `json:"pid" api:"required"`
+	Referrer     string                                          `json:"referrer" api:"required"`
+	Screen       IdentityQualifiedWebhookEventDataSessionScreen  `json:"screen" api:"required"`
+	Sid          string                                          `json:"sid" api:"required"`
+	Tenant       string                                          `json:"tenant" api:"required"`
+	Timezone     string                                          `json:"timezone" api:"required"`
+	UserAgent    string                                          `json:"userAgent" api:"required"`
+	Utm          IdentityQualifiedWebhookEventDataSessionUtm     `json:"utm" api:"required"`
+	Vid          string                                          `json:"vid" api:"required"`
 	Options      map[string]any                                  `json:"options"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -649,20 +649,20 @@ func (r *IdentityQualifiedWebhookEventDataSession) UnmarshalJSON(data []byte) er
 }
 
 type IdentityQualifiedWebhookEventDataSessionNetwork struct {
-	Asn           IdentityQualifiedWebhookEventDataSessionNetworkAsn           `json:"asn,required"`
-	BotManagement IdentityQualifiedWebhookEventDataSessionNetworkBotManagement `json:"botManagement,required"`
-	City          string                                                       `json:"city,required"`
-	Colo          string                                                       `json:"colo,required"`
-	Continent     string                                                       `json:"continent,required"`
-	Country       string                                                       `json:"country,required"`
-	IP            string                                                       `json:"ip,required"`
-	IsEu          bool                                                         `json:"isEU,required"`
-	Latitude      string                                                       `json:"latitude,required"`
-	Longitude     string                                                       `json:"longitude,required"`
-	MetroCode     string                                                       `json:"metroCode,required"`
-	PostalCode    string                                                       `json:"postalCode,required"`
-	Region        string                                                       `json:"region,required"`
-	RegionCode    string                                                       `json:"regionCode,required"`
+	Asn           IdentityQualifiedWebhookEventDataSessionNetworkAsn           `json:"asn" api:"required"`
+	BotManagement IdentityQualifiedWebhookEventDataSessionNetworkBotManagement `json:"botManagement" api:"required"`
+	City          string                                                       `json:"city" api:"required"`
+	Colo          string                                                       `json:"colo" api:"required"`
+	Continent     string                                                       `json:"continent" api:"required"`
+	Country       string                                                       `json:"country" api:"required"`
+	IP            string                                                       `json:"ip" api:"required"`
+	IsEu          bool                                                         `json:"isEU" api:"required"`
+	Latitude      string                                                       `json:"latitude" api:"required"`
+	Longitude     string                                                       `json:"longitude" api:"required"`
+	MetroCode     string                                                       `json:"metroCode" api:"required"`
+	PostalCode    string                                                       `json:"postalCode" api:"required"`
+	Region        string                                                       `json:"region" api:"required"`
+	RegionCode    string                                                       `json:"regionCode" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Asn           respjson.Field
@@ -691,8 +691,8 @@ func (r *IdentityQualifiedWebhookEventDataSessionNetwork) UnmarshalJSON(data []b
 }
 
 type IdentityQualifiedWebhookEventDataSessionNetworkAsn struct {
-	Code float64 `json:"code,required"`
-	Name string  `json:"name,required"`
+	Code float64 `json:"code" api:"required"`
+	Name string  `json:"name" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -709,10 +709,10 @@ func (r *IdentityQualifiedWebhookEventDataSessionNetworkAsn) UnmarshalJSON(data 
 }
 
 type IdentityQualifiedWebhookEventDataSessionNetworkBotManagement struct {
-	CorporateProxy      bool    `json:"corporateProxy,required"`
-	Score               float64 `json:"score,required"`
-	VerifiedBot         bool    `json:"verifiedBot,required"`
-	VerifiedBotCategory string  `json:"verifiedBotCategory,required"`
+	CorporateProxy      bool    `json:"corporateProxy" api:"required"`
+	Score               float64 `json:"score" api:"required"`
+	VerifiedBot         bool    `json:"verifiedBot" api:"required"`
+	VerifiedBotCategory string  `json:"verifiedBotCategory" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CorporateProxy      respjson.Field
@@ -733,8 +733,8 @@ func (r *IdentityQualifiedWebhookEventDataSessionNetworkBotManagement) Unmarshal
 }
 
 type IdentityQualifiedWebhookEventDataSessionScreen struct {
-	Height float64 `json:"height,required"`
-	Width  float64 `json:"width,required"`
+	Height float64 `json:"height" api:"required"`
+	Width  float64 `json:"width" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
@@ -751,11 +751,11 @@ func (r *IdentityQualifiedWebhookEventDataSessionScreen) UnmarshalJSON(data []by
 }
 
 type IdentityQualifiedWebhookEventDataSessionUtm struct {
-	Campaign string `json:"campaign,required"`
-	Content  string `json:"content,required"`
-	Medium   string `json:"medium,required"`
-	Source   string `json:"source,required"`
-	Term     string `json:"term,required"`
+	Campaign string `json:"campaign" api:"required"`
+	Content  string `json:"content" api:"required"`
+	Medium   string `json:"medium" api:"required"`
+	Source   string `json:"source" api:"required"`
+	Term     string `json:"term" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Campaign    respjson.Field
@@ -776,12 +776,12 @@ func (r *IdentityQualifiedWebhookEventDataSessionUtm) UnmarshalJSON(data []byte)
 
 type IdentityEnrichedWebhookEvent struct {
 	// Unique event identifier
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// Unix timestamp (milliseconds) when the event was created
-	Created int64                            `json:"created,required"`
-	Data    IdentityEnrichedWebhookEventData `json:"data,required"`
+	Created int64                            `json:"created" api:"required"`
+	Data    IdentityEnrichedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityEnriched `json:"type,required"`
+	Type constant.IdentityEnriched `json:"type" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -800,11 +800,11 @@ func (r *IdentityEnrichedWebhookEvent) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityEnrichedWebhookEventData struct {
-	Attribution       IdentityEnrichedWebhookEventDataAttribution `json:"attribution,required"`
-	CompaniesEnriched float64                                     `json:"companiesEnriched,required"`
-	Enrichment        IdentityEnrichedWebhookEventDataEnrichment  `json:"enrichment,required"`
-	Query             IdentityEnrichedWebhookEventDataQuery       `json:"query,required"`
-	Session           IdentityEnrichedWebhookEventDataSession     `json:"session,required"`
+	Attribution       IdentityEnrichedWebhookEventDataAttribution `json:"attribution" api:"required"`
+	CompaniesEnriched float64                                     `json:"companiesEnriched" api:"required"`
+	Enrichment        IdentityEnrichedWebhookEventDataEnrichment  `json:"enrichment" api:"required"`
+	Query             IdentityEnrichedWebhookEventDataQuery       `json:"query" api:"required"`
+	Session           IdentityEnrichedWebhookEventDataSession     `json:"session" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Attribution       respjson.Field
@@ -824,13 +824,13 @@ func (r *IdentityEnrichedWebhookEventData) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityEnrichedWebhookEventDataAttribution struct {
-	PixelID string `json:"pixelId,required"`
+	PixelID string `json:"pixelId" api:"required"`
 	// Any of "jNNdd", "OMzN4".
-	Prid      string `json:"prid,required"`
-	SessionID string `json:"sessionId,required"`
+	Prid      string `json:"prid" api:"required"`
+	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
-	Type string `json:"type,required"`
-	Vid  string `json:"vid,required"`
+	Type string `json:"type" api:"required"`
+	Vid  string `json:"vid" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		PixelID     respjson.Field
@@ -850,8 +850,8 @@ func (r *IdentityEnrichedWebhookEventDataAttribution) UnmarshalJSON(data []byte)
 }
 
 type IdentityEnrichedWebhookEventDataEnrichment struct {
-	Companies        []IdentityEnrichedWebhookEventDataEnrichmentCompany         `json:"companies,required"`
-	Person           IdentityEnrichedWebhookEventDataEnrichmentPerson            `json:"person,required"`
+	Companies        []IdentityEnrichedWebhookEventDataEnrichmentCompany         `json:"companies" api:"required"`
+	Person           IdentityEnrichedWebhookEventDataEnrichmentPerson            `json:"person" api:"required"`
 	EmailValidations []IdentityEnrichedWebhookEventDataEnrichmentEmailValidation `json:"emailValidations"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -871,29 +871,29 @@ func (r *IdentityEnrichedWebhookEventDataEnrichment) UnmarshalJSON(data []byte) 
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompany struct {
 	// Any of "full".
-	Type       string `json:"_type,required"`
-	EnrichedAt string `json:"enrichedAt,required"`
-	Name       string `json:"name,required"`
+	Type       string `json:"_type" api:"required"`
+	EnrichedAt string `json:"enrichedAt" api:"required"`
+	Name       string `json:"name" api:"required"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                             `json:"provider,required"`
-	Address           IdentityEnrichedWebhookEventDataEnrichmentCompanyAddress           `json:"address,nullable"`
-	Description       string                                                             `json:"description,nullable"`
-	Domain            string                                                             `json:"domain,nullable"`
-	EmployeeCount     float64                                                            `json:"employeeCount,nullable"`
-	EstimatedRevenue  IdentityEnrichedWebhookEventDataEnrichmentCompanyEstimatedRevenue  `json:"estimatedRevenue,nullable"`
-	FoundedYear       float64                                                            `json:"foundedYear,nullable"`
-	Funding           IdentityEnrichedWebhookEventDataEnrichmentCompanyFunding           `json:"funding,nullable"`
-	Headcount         IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcount         `json:"headcount,nullable"`
-	Industry          string                                                             `json:"industry,nullable"`
-	LinkedinFollowers IdentityEnrichedWebhookEventDataEnrichmentCompanyLinkedinFollowers `json:"linkedinFollowers,nullable"`
-	LinkedinID        string                                                             `json:"linkedinId,nullable"`
-	LinkedinURL       string                                                             `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL           string                                                             `json:"logoUrl,nullable" format:"uri"`
-	Seo               IdentityEnrichedWebhookEventDataEnrichmentCompanySeo               `json:"seo,nullable"`
+	Provider          string                                                             `json:"provider" api:"required"`
+	Address           IdentityEnrichedWebhookEventDataEnrichmentCompanyAddress           `json:"address" api:"nullable"`
+	Description       string                                                             `json:"description" api:"nullable"`
+	Domain            string                                                             `json:"domain" api:"nullable"`
+	EmployeeCount     float64                                                            `json:"employeeCount" api:"nullable"`
+	EstimatedRevenue  IdentityEnrichedWebhookEventDataEnrichmentCompanyEstimatedRevenue  `json:"estimatedRevenue" api:"nullable"`
+	FoundedYear       float64                                                            `json:"foundedYear" api:"nullable"`
+	Funding           IdentityEnrichedWebhookEventDataEnrichmentCompanyFunding           `json:"funding" api:"nullable"`
+	Headcount         IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcount         `json:"headcount" api:"nullable"`
+	Industry          string                                                             `json:"industry" api:"nullable"`
+	LinkedinFollowers IdentityEnrichedWebhookEventDataEnrichmentCompanyLinkedinFollowers `json:"linkedinFollowers" api:"nullable"`
+	LinkedinID        string                                                             `json:"linkedinId" api:"nullable"`
+	LinkedinURL       string                                                             `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL           string                                                             `json:"logoUrl" api:"nullable" format:"uri"`
+	Seo               IdentityEnrichedWebhookEventDataEnrichmentCompanySeo               `json:"seo" api:"nullable"`
 	Specialties       []string                                                           `json:"specialties"`
-	Taxonomy          IdentityEnrichedWebhookEventDataEnrichmentCompanyTaxonomy          `json:"taxonomy,nullable"`
-	Website           string                                                             `json:"website,nullable" format:"uri"`
-	WebTraffic        IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTraffic        `json:"webTraffic,nullable"`
+	Taxonomy          IdentityEnrichedWebhookEventDataEnrichmentCompanyTaxonomy          `json:"taxonomy" api:"nullable"`
+	Website           string                                                             `json:"website" api:"nullable" format:"uri"`
+	WebTraffic        IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTraffic        `json:"webTraffic" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type              respjson.Field
@@ -930,11 +930,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompany) UnmarshalJSON(data [
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -955,8 +955,8 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyAddress) UnmarshalJSON
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyEstimatedRevenue struct {
 	Currency string  `json:"currency"`
-	Max      float64 `json:"max,nullable"`
-	Min      float64 `json:"min,nullable"`
+	Max      float64 `json:"max" api:"nullable"`
+	Min      float64 `json:"min" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Currency    respjson.Field
@@ -976,11 +976,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyEstimatedRevenue) Unma
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyFunding struct {
-	DaysSinceLastRound float64  `json:"daysSinceLastRound,nullable"`
+	DaysSinceLastRound float64  `json:"daysSinceLastRound" api:"nullable"`
 	Investors          []string `json:"investors"`
-	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd,nullable"`
-	LastRoundType      string   `json:"lastRoundType,nullable"`
-	TotalRaisedUsd     float64  `json:"totalRaisedUsd,nullable"`
+	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd" api:"nullable"`
+	LastRoundType      string   `json:"lastRoundType" api:"nullable"`
+	TotalRaisedUsd     float64  `json:"totalRaisedUsd" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DaysSinceLastRound respjson.Field
@@ -1000,8 +1000,8 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyFunding) UnmarshalJSON
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcount struct {
-	Growth IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcountGrowth `json:"growth,nullable"`
-	Total  float64                                                          `json:"total,nullable"`
+	Growth IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcountGrowth `json:"growth" api:"nullable"`
+	Total  float64                                                          `json:"total" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Growth      respjson.Field
@@ -1020,9 +1020,9 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcount) UnmarshalJS
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcountGrowth struct {
-	Mom float64 `json:"mom,nullable"`
-	Qoq float64 `json:"qoq,nullable"`
-	Yoy float64 `json:"yoy,nullable"`
+	Mom float64 `json:"mom" api:"nullable"`
+	Qoq float64 `json:"qoq" api:"nullable"`
+	Yoy float64 `json:"yoy" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Mom         respjson.Field
@@ -1042,10 +1042,10 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyHeadcountGrowth) Unmar
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyLinkedinFollowers struct {
-	Count            float64 `json:"count,nullable"`
-	MomGrowthPercent float64 `json:"momGrowthPercent,nullable"`
-	QoqGrowthPercent float64 `json:"qoqGrowthPercent,nullable"`
-	YoyGrowthPercent float64 `json:"yoyGrowthPercent,nullable"`
+	Count            float64 `json:"count" api:"nullable"`
+	MomGrowthPercent float64 `json:"momGrowthPercent" api:"nullable"`
+	QoqGrowthPercent float64 `json:"qoqGrowthPercent" api:"nullable"`
+	YoyGrowthPercent float64 `json:"yoyGrowthPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Count            respjson.Field
@@ -1066,13 +1066,13 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyLinkedinFollowers) Unm
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanySeo struct {
-	AverageAdRank        float64 `json:"averageAdRank,nullable"`
-	AverageOrganicRank   float64 `json:"averageOrganicRank,nullable"`
-	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend,nullable"`
-	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks,nullable"`
-	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue,nullable"`
-	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks,nullable"`
-	TotalOrganicKeywords float64 `json:"totalOrganicKeywords,nullable"`
+	AverageAdRank        float64 `json:"averageAdRank" api:"nullable"`
+	AverageOrganicRank   float64 `json:"averageOrganicRank" api:"nullable"`
+	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend" api:"nullable"`
+	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks" api:"nullable"`
+	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue" api:"nullable"`
+	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks" api:"nullable"`
+	TotalOrganicKeywords float64 `json:"totalOrganicKeywords" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AverageAdRank        respjson.Field
@@ -1094,7 +1094,7 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanySeo) UnmarshalJSON(dat
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyTaxonomy struct {
-	LinkedinIndustry    string   `json:"linkedinIndustry,nullable"`
+	LinkedinIndustry    string   `json:"linkedinIndustry" api:"nullable"`
 	LinkedinSpecialties []string `json:"linkedinSpecialties"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -1114,10 +1114,10 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyTaxonomy) UnmarshalJSO
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTraffic struct {
-	MomGrowthPercent float64                                                                   `json:"momGrowthPercent,nullable"`
-	MonthlyVisitors  float64                                                                   `json:"monthlyVisitors,nullable"`
-	QoqGrowthPercent float64                                                                   `json:"qoqGrowthPercent,nullable"`
-	TrafficSources   IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources `json:"trafficSources,nullable"`
+	MomGrowthPercent float64                                                                   `json:"momGrowthPercent" api:"nullable"`
+	MonthlyVisitors  float64                                                                   `json:"monthlyVisitors" api:"nullable"`
+	QoqGrowthPercent float64                                                                   `json:"qoqGrowthPercent" api:"nullable"`
+	TrafficSources   IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources `json:"trafficSources" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		MomGrowthPercent respjson.Field
@@ -1138,11 +1138,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTraffic) UnmarshalJ
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources struct {
-	DirectPercent       float64 `json:"directPercent,nullable"`
-	PaidReferralPercent float64 `json:"paidReferralPercent,nullable"`
-	ReferralPercent     float64 `json:"referralPercent,nullable"`
-	SearchPercent       float64 `json:"searchPercent,nullable"`
-	SocialPercent       float64 `json:"socialPercent,nullable"`
+	DirectPercent       float64 `json:"directPercent" api:"nullable"`
+	PaidReferralPercent float64 `json:"paidReferralPercent" api:"nullable"`
+	ReferralPercent     float64 `json:"referralPercent" api:"nullable"`
+	SearchPercent       float64 `json:"searchPercent" api:"nullable"`
+	SocialPercent       float64 `json:"socialPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DirectPercent       respjson.Field
@@ -1164,25 +1164,25 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSourc
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPerson struct {
-	EnrichedAt  string `json:"enrichedAt,required"`
-	LinkedinURL string `json:"linkedinUrl,required" format:"uri"`
+	EnrichedAt  string `json:"enrichedAt" api:"required"`
+	LinkedinURL string `json:"linkedinUrl" api:"required" format:"uri"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                       `json:"provider,required"`
-	Connections       float64                                                      `json:"connections,nullable"`
+	Provider          string                                                       `json:"provider" api:"required"`
+	Connections       float64                                                      `json:"connections" api:"nullable"`
 	Education         []IdentityEnrichedWebhookEventDataEnrichmentPersonEducation  `json:"education"`
-	Email             string                                                       `json:"email,nullable" format:"email"`
+	Email             string                                                       `json:"email" api:"nullable" format:"email"`
 	Employments       []IdentityEnrichedWebhookEventDataEnrichmentPersonEmployment `json:"employments"`
 	Experience        []IdentityEnrichedWebhookEventDataEnrichmentPersonExperience `json:"experience"`
-	FirstName         string                                                       `json:"firstName,nullable"`
-	FullName          string                                                       `json:"fullName,nullable"`
-	Headline          string                                                       `json:"headline,nullable"`
+	FirstName         string                                                       `json:"firstName" api:"nullable"`
+	FullName          string                                                       `json:"fullName" api:"nullable"`
+	Headline          string                                                       `json:"headline" api:"nullable"`
 	Languages         []string                                                     `json:"languages"`
-	LastName          string                                                       `json:"lastName,nullable"`
-	LinkedinID        string                                                       `json:"linkedinId,nullable"`
-	Location          IdentityEnrichedWebhookEventDataEnrichmentPersonLocation     `json:"location,nullable"`
-	ProfilePictureURL string                                                       `json:"profilePictureUrl,nullable" format:"uri"`
+	LastName          string                                                       `json:"lastName" api:"nullable"`
+	LinkedinID        string                                                       `json:"linkedinId" api:"nullable"`
+	Location          IdentityEnrichedWebhookEventDataEnrichmentPersonLocation     `json:"location" api:"nullable"`
+	ProfilePictureURL string                                                       `json:"profilePictureUrl" api:"nullable" format:"uri"`
 	Skills            []string                                                     `json:"skills"`
-	Summary           string                                                       `json:"summary,nullable"`
+	Summary           string                                                       `json:"summary" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		EnrichedAt        respjson.Field
@@ -1215,13 +1215,13 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPerson) UnmarshalJSON(data []
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEducation struct {
-	InstituteName       string `json:"instituteName,required"`
-	Degree              string `json:"degree,nullable"`
-	EndDate             string `json:"endDate,nullable"`
-	FieldOfStudy        string `json:"fieldOfStudy,nullable"`
-	InstituteLinkedinID string `json:"instituteLinkedinId,nullable"`
-	InstituteLogoURL    string `json:"instituteLogoUrl,nullable" format:"uri"`
-	StartDate           string `json:"startDate,nullable"`
+	InstituteName       string `json:"instituteName" api:"required"`
+	Degree              string `json:"degree" api:"nullable"`
+	EndDate             string `json:"endDate" api:"nullable"`
+	FieldOfStudy        string `json:"fieldOfStudy" api:"nullable"`
+	InstituteLinkedinID string `json:"instituteLinkedinId" api:"nullable"`
+	InstituteLogoURL    string `json:"instituteLogoUrl" api:"nullable" format:"uri"`
+	StartDate           string `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		InstituteName       respjson.Field
@@ -1245,12 +1245,12 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEducation) UnmarshalJSO
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmployment struct {
-	Company     IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompany `json:"company,required"`
-	Title       string                                                            `json:"title,required"`
-	Description string                                                            `json:"description,nullable"`
-	EndDate     string                                                            `json:"endDate,nullable"`
-	Location    string                                                            `json:"location,nullable"`
-	StartDate   string                                                            `json:"startDate,nullable"`
+	Company     IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompany `json:"company" api:"required"`
+	Title       string                                                            `json:"title" api:"required"`
+	Description string                                                            `json:"description" api:"nullable"`
+	EndDate     string                                                            `json:"endDate" api:"nullable"`
+	Location    string                                                            `json:"location" api:"nullable"`
+	StartDate   string                                                            `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Company     respjson.Field
@@ -1274,29 +1274,29 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmployment) UnmarshalJS
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompany struct {
 	// Any of "full".
-	Type       string `json:"_type,required"`
-	EnrichedAt string `json:"enrichedAt,required"`
-	Name       string `json:"name,required"`
+	Type       string `json:"_type" api:"required"`
+	EnrichedAt string `json:"enrichedAt" api:"required"`
+	Name       string `json:"name" api:"required"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                                             `json:"provider,required"`
-	Address           IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress           `json:"address,nullable"`
-	Description       string                                                                             `json:"description,nullable"`
-	Domain            string                                                                             `json:"domain,nullable"`
-	EmployeeCount     float64                                                                            `json:"employeeCount,nullable"`
-	EstimatedRevenue  IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue  `json:"estimatedRevenue,nullable"`
-	FoundedYear       float64                                                                            `json:"foundedYear,nullable"`
-	Funding           IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding           `json:"funding,nullable"`
-	Headcount         IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount         `json:"headcount,nullable"`
-	Industry          string                                                                             `json:"industry,nullable"`
-	LinkedinFollowers IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers `json:"linkedinFollowers,nullable"`
-	LinkedinID        string                                                                             `json:"linkedinId,nullable"`
-	LinkedinURL       string                                                                             `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL           string                                                                             `json:"logoUrl,nullable" format:"uri"`
-	Seo               IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanySeo               `json:"seo,nullable"`
+	Provider          string                                                                             `json:"provider" api:"required"`
+	Address           IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress           `json:"address" api:"nullable"`
+	Description       string                                                                             `json:"description" api:"nullable"`
+	Domain            string                                                                             `json:"domain" api:"nullable"`
+	EmployeeCount     float64                                                                            `json:"employeeCount" api:"nullable"`
+	EstimatedRevenue  IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue  `json:"estimatedRevenue" api:"nullable"`
+	FoundedYear       float64                                                                            `json:"foundedYear" api:"nullable"`
+	Funding           IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding           `json:"funding" api:"nullable"`
+	Headcount         IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount         `json:"headcount" api:"nullable"`
+	Industry          string                                                                             `json:"industry" api:"nullable"`
+	LinkedinFollowers IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers `json:"linkedinFollowers" api:"nullable"`
+	LinkedinID        string                                                                             `json:"linkedinId" api:"nullable"`
+	LinkedinURL       string                                                                             `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL           string                                                                             `json:"logoUrl" api:"nullable" format:"uri"`
+	Seo               IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanySeo               `json:"seo" api:"nullable"`
 	Specialties       []string                                                                           `json:"specialties"`
-	Taxonomy          IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy          `json:"taxonomy,nullable"`
-	Website           string                                                                             `json:"website,nullable" format:"uri"`
-	WebTraffic        IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic        `json:"webTraffic,nullable"`
+	Taxonomy          IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy          `json:"taxonomy" api:"nullable"`
+	Website           string                                                                             `json:"website" api:"nullable" format:"uri"`
+	WebTraffic        IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic        `json:"webTraffic" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type              respjson.Field
@@ -1335,11 +1335,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompany) Unma
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -1362,8 +1362,8 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyAddres
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue struct {
 	Currency string  `json:"currency"`
-	Max      float64 `json:"max,nullable"`
-	Min      float64 `json:"min,nullable"`
+	Max      float64 `json:"max" api:"nullable"`
+	Min      float64 `json:"min" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Currency    respjson.Field
@@ -1383,11 +1383,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyEstima
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding struct {
-	DaysSinceLastRound float64  `json:"daysSinceLastRound,nullable"`
+	DaysSinceLastRound float64  `json:"daysSinceLastRound" api:"nullable"`
 	Investors          []string `json:"investors"`
-	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd,nullable"`
-	LastRoundType      string   `json:"lastRoundType,nullable"`
-	TotalRaisedUsd     float64  `json:"totalRaisedUsd,nullable"`
+	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd" api:"nullable"`
+	LastRoundType      string   `json:"lastRoundType" api:"nullable"`
+	TotalRaisedUsd     float64  `json:"totalRaisedUsd" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DaysSinceLastRound respjson.Field
@@ -1409,8 +1409,8 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyFundin
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount struct {
-	Growth IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth `json:"growth,nullable"`
-	Total  float64                                                                          `json:"total,nullable"`
+	Growth IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth `json:"growth" api:"nullable"`
+	Total  float64                                                                          `json:"total" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Growth      respjson.Field
@@ -1429,9 +1429,9 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadco
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth struct {
-	Mom float64 `json:"mom,nullable"`
-	Qoq float64 `json:"qoq,nullable"`
-	Yoy float64 `json:"yoy,nullable"`
+	Mom float64 `json:"mom" api:"nullable"`
+	Qoq float64 `json:"qoq" api:"nullable"`
+	Yoy float64 `json:"yoy" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Mom         respjson.Field
@@ -1451,10 +1451,10 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadco
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers struct {
-	Count            float64 `json:"count,nullable"`
-	MomGrowthPercent float64 `json:"momGrowthPercent,nullable"`
-	QoqGrowthPercent float64 `json:"qoqGrowthPercent,nullable"`
-	YoyGrowthPercent float64 `json:"yoyGrowthPercent,nullable"`
+	Count            float64 `json:"count" api:"nullable"`
+	MomGrowthPercent float64 `json:"momGrowthPercent" api:"nullable"`
+	QoqGrowthPercent float64 `json:"qoqGrowthPercent" api:"nullable"`
+	YoyGrowthPercent float64 `json:"yoyGrowthPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Count            respjson.Field
@@ -1475,13 +1475,13 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyLinked
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanySeo struct {
-	AverageAdRank        float64 `json:"averageAdRank,nullable"`
-	AverageOrganicRank   float64 `json:"averageOrganicRank,nullable"`
-	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend,nullable"`
-	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks,nullable"`
-	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue,nullable"`
-	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks,nullable"`
-	TotalOrganicKeywords float64 `json:"totalOrganicKeywords,nullable"`
+	AverageAdRank        float64 `json:"averageAdRank" api:"nullable"`
+	AverageOrganicRank   float64 `json:"averageOrganicRank" api:"nullable"`
+	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend" api:"nullable"`
+	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks" api:"nullable"`
+	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue" api:"nullable"`
+	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks" api:"nullable"`
+	TotalOrganicKeywords float64 `json:"totalOrganicKeywords" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AverageAdRank        respjson.Field
@@ -1505,7 +1505,7 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanySeo) U
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy struct {
-	LinkedinIndustry    string   `json:"linkedinIndustry,nullable"`
+	LinkedinIndustry    string   `json:"linkedinIndustry" api:"nullable"`
 	LinkedinSpecialties []string `json:"linkedinSpecialties"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -1525,10 +1525,10 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxono
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic struct {
-	MomGrowthPercent float64                                                                                   `json:"momGrowthPercent,nullable"`
-	MonthlyVisitors  float64                                                                                   `json:"monthlyVisitors,nullable"`
-	QoqGrowthPercent float64                                                                                   `json:"qoqGrowthPercent,nullable"`
-	TrafficSources   IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources `json:"trafficSources,nullable"`
+	MomGrowthPercent float64                                                                                   `json:"momGrowthPercent" api:"nullable"`
+	MonthlyVisitors  float64                                                                                   `json:"monthlyVisitors" api:"nullable"`
+	QoqGrowthPercent float64                                                                                   `json:"qoqGrowthPercent" api:"nullable"`
+	TrafficSources   IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources `json:"trafficSources" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		MomGrowthPercent respjson.Field
@@ -1549,11 +1549,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTra
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources struct {
-	DirectPercent       float64 `json:"directPercent,nullable"`
-	PaidReferralPercent float64 `json:"paidReferralPercent,nullable"`
-	ReferralPercent     float64 `json:"referralPercent,nullable"`
-	SearchPercent       float64 `json:"searchPercent,nullable"`
-	SocialPercent       float64 `json:"socialPercent,nullable"`
+	DirectPercent       float64 `json:"directPercent" api:"nullable"`
+	PaidReferralPercent float64 `json:"paidReferralPercent" api:"nullable"`
+	ReferralPercent     float64 `json:"referralPercent" api:"nullable"`
+	SearchPercent       float64 `json:"searchPercent" api:"nullable"`
+	SocialPercent       float64 `json:"socialPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DirectPercent       respjson.Field
@@ -1575,12 +1575,12 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTra
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonExperience struct {
-	Company     IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompany `json:"company,required"`
-	Title       string                                                            `json:"title,required"`
-	Description string                                                            `json:"description,nullable"`
-	EndDate     string                                                            `json:"endDate,nullable"`
-	Location    string                                                            `json:"location,nullable"`
-	StartDate   string                                                            `json:"startDate,nullable"`
+	Company     IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompany `json:"company" api:"required"`
+	Title       string                                                            `json:"title" api:"required"`
+	Description string                                                            `json:"description" api:"nullable"`
+	EndDate     string                                                            `json:"endDate" api:"nullable"`
+	Location    string                                                            `json:"location" api:"nullable"`
+	StartDate   string                                                            `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Company     respjson.Field
@@ -1604,18 +1604,18 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonExperience) UnmarshalJS
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompany struct {
 	// Any of "basic".
-	Type          string                                                                   `json:"_type,required"`
-	Name          string                                                                   `json:"name,required"`
-	Address       IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompanyAddress `json:"address,nullable"`
-	Description   string                                                                   `json:"description,nullable"`
-	Domain        string                                                                   `json:"domain,nullable"`
-	EmployeeCount float64                                                                  `json:"employeeCount,nullable"`
-	FoundedYear   float64                                                                  `json:"foundedYear,nullable"`
-	Industry      string                                                                   `json:"industry,nullable"`
-	LinkedinID    string                                                                   `json:"linkedinId,nullable"`
-	LinkedinURL   string                                                                   `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL       string                                                                   `json:"logoUrl,nullable" format:"uri"`
-	Website       string                                                                   `json:"website,nullable" format:"uri"`
+	Type          string                                                                   `json:"_type" api:"required"`
+	Name          string                                                                   `json:"name" api:"required"`
+	Address       IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompanyAddress `json:"address" api:"nullable"`
+	Description   string                                                                   `json:"description" api:"nullable"`
+	Domain        string                                                                   `json:"domain" api:"nullable"`
+	EmployeeCount float64                                                                  `json:"employeeCount" api:"nullable"`
+	FoundedYear   float64                                                                  `json:"foundedYear" api:"nullable"`
+	Industry      string                                                                   `json:"industry" api:"nullable"`
+	LinkedinID    string                                                                   `json:"linkedinId" api:"nullable"`
+	LinkedinURL   string                                                                   `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL       string                                                                   `json:"logoUrl" api:"nullable" format:"uri"`
+	Website       string                                                                   `json:"website" api:"nullable" format:"uri"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type          respjson.Field
@@ -1644,11 +1644,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompany) Unma
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -1670,12 +1670,12 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonExperienceCompanyAddres
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentPersonLocation struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Raw         string `json:"raw,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Raw         string `json:"raw" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -1696,11 +1696,11 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentPersonLocation) UnmarshalJSON
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentEmailValidation struct {
-	Email    string                                                         `json:"email,required"`
-	Error    IdentityEnrichedWebhookEventDataEnrichmentEmailValidationError `json:"error,required"`
-	Provider string                                                         `json:"provider,required"`
+	Email    string                                                         `json:"email" api:"required"`
+	Error    IdentityEnrichedWebhookEventDataEnrichmentEmailValidationError `json:"error" api:"required"`
+	Provider string                                                         `json:"provider" api:"required"`
 	// Any of "valid", "invalid", "catch_all", "valid_catch_all".
-	Validity string `json:"validity,required"`
+	Validity string `json:"validity" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Email       respjson.Field
@@ -1721,8 +1721,8 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentEmailValidation) UnmarshalJSO
 }
 
 type IdentityEnrichedWebhookEventDataEnrichmentEmailValidationError struct {
-	Code    string `json:"code,required"`
-	Message string `json:"message,required"`
+	Code    string `json:"code" api:"required"`
+	Message string `json:"message" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -1742,10 +1742,10 @@ func (r *IdentityEnrichedWebhookEventDataEnrichmentEmailValidationError) Unmarsh
 
 type IdentityEnrichedWebhookEventDataQuery struct {
 	// Any of "linkedinUrl".
-	Match string `json:"match,required"`
+	Match string `json:"match" api:"required"`
 	// Any of "person".
-	Type  string `json:"type,required"`
-	Value string `json:"value,required"`
+	Type  string `json:"type" api:"required"`
+	Value string `json:"value" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Match       respjson.Field
@@ -1763,22 +1763,22 @@ func (r *IdentityEnrichedWebhookEventDataQuery) UnmarshalJSON(data []byte) error
 }
 
 type IdentityEnrichedWebhookEventDataSession struct {
-	CreatedAt    float64                                        `json:"createdAt,required"`
-	EndedAt      float64                                        `json:"endedAt,required"`
-	Fbclid       string                                         `json:"fbclid,required"`
-	Gclid        string                                         `json:"gclid,required"`
-	LandingPage  string                                         `json:"landingPage,required"`
-	LandingTitle string                                         `json:"landingTitle,required"`
-	Network      IdentityEnrichedWebhookEventDataSessionNetwork `json:"network,required"`
-	Pid          string                                         `json:"pid,required"`
-	Referrer     string                                         `json:"referrer,required"`
-	Screen       IdentityEnrichedWebhookEventDataSessionScreen  `json:"screen,required"`
-	Sid          string                                         `json:"sid,required"`
-	Tenant       string                                         `json:"tenant,required"`
-	Timezone     string                                         `json:"timezone,required"`
-	UserAgent    string                                         `json:"userAgent,required"`
-	Utm          IdentityEnrichedWebhookEventDataSessionUtm     `json:"utm,required"`
-	Vid          string                                         `json:"vid,required"`
+	CreatedAt    float64                                        `json:"createdAt" api:"required"`
+	EndedAt      float64                                        `json:"endedAt" api:"required"`
+	Fbclid       string                                         `json:"fbclid" api:"required"`
+	Gclid        string                                         `json:"gclid" api:"required"`
+	LandingPage  string                                         `json:"landingPage" api:"required"`
+	LandingTitle string                                         `json:"landingTitle" api:"required"`
+	Network      IdentityEnrichedWebhookEventDataSessionNetwork `json:"network" api:"required"`
+	Pid          string                                         `json:"pid" api:"required"`
+	Referrer     string                                         `json:"referrer" api:"required"`
+	Screen       IdentityEnrichedWebhookEventDataSessionScreen  `json:"screen" api:"required"`
+	Sid          string                                         `json:"sid" api:"required"`
+	Tenant       string                                         `json:"tenant" api:"required"`
+	Timezone     string                                         `json:"timezone" api:"required"`
+	UserAgent    string                                         `json:"userAgent" api:"required"`
+	Utm          IdentityEnrichedWebhookEventDataSessionUtm     `json:"utm" api:"required"`
+	Vid          string                                         `json:"vid" api:"required"`
 	Options      map[string]any                                 `json:"options"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -1811,20 +1811,20 @@ func (r *IdentityEnrichedWebhookEventDataSession) UnmarshalJSON(data []byte) err
 }
 
 type IdentityEnrichedWebhookEventDataSessionNetwork struct {
-	Asn           IdentityEnrichedWebhookEventDataSessionNetworkAsn           `json:"asn,required"`
-	BotManagement IdentityEnrichedWebhookEventDataSessionNetworkBotManagement `json:"botManagement,required"`
-	City          string                                                      `json:"city,required"`
-	Colo          string                                                      `json:"colo,required"`
-	Continent     string                                                      `json:"continent,required"`
-	Country       string                                                      `json:"country,required"`
-	IP            string                                                      `json:"ip,required"`
-	IsEu          bool                                                        `json:"isEU,required"`
-	Latitude      string                                                      `json:"latitude,required"`
-	Longitude     string                                                      `json:"longitude,required"`
-	MetroCode     string                                                      `json:"metroCode,required"`
-	PostalCode    string                                                      `json:"postalCode,required"`
-	Region        string                                                      `json:"region,required"`
-	RegionCode    string                                                      `json:"regionCode,required"`
+	Asn           IdentityEnrichedWebhookEventDataSessionNetworkAsn           `json:"asn" api:"required"`
+	BotManagement IdentityEnrichedWebhookEventDataSessionNetworkBotManagement `json:"botManagement" api:"required"`
+	City          string                                                      `json:"city" api:"required"`
+	Colo          string                                                      `json:"colo" api:"required"`
+	Continent     string                                                      `json:"continent" api:"required"`
+	Country       string                                                      `json:"country" api:"required"`
+	IP            string                                                      `json:"ip" api:"required"`
+	IsEu          bool                                                        `json:"isEU" api:"required"`
+	Latitude      string                                                      `json:"latitude" api:"required"`
+	Longitude     string                                                      `json:"longitude" api:"required"`
+	MetroCode     string                                                      `json:"metroCode" api:"required"`
+	PostalCode    string                                                      `json:"postalCode" api:"required"`
+	Region        string                                                      `json:"region" api:"required"`
+	RegionCode    string                                                      `json:"regionCode" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Asn           respjson.Field
@@ -1853,8 +1853,8 @@ func (r *IdentityEnrichedWebhookEventDataSessionNetwork) UnmarshalJSON(data []by
 }
 
 type IdentityEnrichedWebhookEventDataSessionNetworkAsn struct {
-	Code float64 `json:"code,required"`
-	Name string  `json:"name,required"`
+	Code float64 `json:"code" api:"required"`
+	Name string  `json:"name" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -1871,10 +1871,10 @@ func (r *IdentityEnrichedWebhookEventDataSessionNetworkAsn) UnmarshalJSON(data [
 }
 
 type IdentityEnrichedWebhookEventDataSessionNetworkBotManagement struct {
-	CorporateProxy      bool    `json:"corporateProxy,required"`
-	Score               float64 `json:"score,required"`
-	VerifiedBot         bool    `json:"verifiedBot,required"`
-	VerifiedBotCategory string  `json:"verifiedBotCategory,required"`
+	CorporateProxy      bool    `json:"corporateProxy" api:"required"`
+	Score               float64 `json:"score" api:"required"`
+	VerifiedBot         bool    `json:"verifiedBot" api:"required"`
+	VerifiedBotCategory string  `json:"verifiedBotCategory" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CorporateProxy      respjson.Field
@@ -1895,8 +1895,8 @@ func (r *IdentityEnrichedWebhookEventDataSessionNetworkBotManagement) UnmarshalJ
 }
 
 type IdentityEnrichedWebhookEventDataSessionScreen struct {
-	Height float64 `json:"height,required"`
-	Width  float64 `json:"width,required"`
+	Height float64 `json:"height" api:"required"`
+	Width  float64 `json:"width" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
@@ -1913,11 +1913,11 @@ func (r *IdentityEnrichedWebhookEventDataSessionScreen) UnmarshalJSON(data []byt
 }
 
 type IdentityEnrichedWebhookEventDataSessionUtm struct {
-	Campaign string `json:"campaign,required"`
-	Content  string `json:"content,required"`
-	Medium   string `json:"medium,required"`
-	Source   string `json:"source,required"`
-	Term     string `json:"term,required"`
+	Campaign string `json:"campaign" api:"required"`
+	Content  string `json:"content" api:"required"`
+	Medium   string `json:"medium" api:"required"`
+	Source   string `json:"source" api:"required"`
+	Term     string `json:"term" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Campaign    respjson.Field
@@ -1938,12 +1938,12 @@ func (r *IdentityEnrichedWebhookEventDataSessionUtm) UnmarshalJSON(data []byte) 
 
 type IdentityValidatedWebhookEvent struct {
 	// Unique event identifier
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// Unix timestamp (milliseconds) when the event was created
-	Created int64                             `json:"created,required"`
-	Data    IdentityValidatedWebhookEventData `json:"data,required"`
+	Created int64                             `json:"created" api:"required"`
+	Data    IdentityValidatedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityValidated `json:"type,required"`
+	Type constant.IdentityValidated `json:"type" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -1962,9 +1962,9 @@ func (r *IdentityValidatedWebhookEvent) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityValidatedWebhookEventData struct {
-	Attribution IdentityValidatedWebhookEventDataAttribution  `json:"attribution,required"`
-	Session     IdentityValidatedWebhookEventDataSession      `json:"session,required"`
-	Validations []IdentityValidatedWebhookEventDataValidation `json:"validations,required"`
+	Attribution IdentityValidatedWebhookEventDataAttribution  `json:"attribution" api:"required"`
+	Session     IdentityValidatedWebhookEventDataSession      `json:"session" api:"required"`
+	Validations []IdentityValidatedWebhookEventDataValidation `json:"validations" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Attribution respjson.Field
@@ -1982,13 +1982,13 @@ func (r *IdentityValidatedWebhookEventData) UnmarshalJSON(data []byte) error {
 }
 
 type IdentityValidatedWebhookEventDataAttribution struct {
-	PixelID string `json:"pixelId,required"`
+	PixelID string `json:"pixelId" api:"required"`
 	// Any of "jNNdd", "OMzN4".
-	Prid      string `json:"prid,required"`
-	SessionID string `json:"sessionId,required"`
+	Prid      string `json:"prid" api:"required"`
+	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
-	Type string `json:"type,required"`
-	Vid  string `json:"vid,required"`
+	Type string `json:"type" api:"required"`
+	Vid  string `json:"vid" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		PixelID     respjson.Field
@@ -2008,22 +2008,22 @@ func (r *IdentityValidatedWebhookEventDataAttribution) UnmarshalJSON(data []byte
 }
 
 type IdentityValidatedWebhookEventDataSession struct {
-	CreatedAt    float64                                         `json:"createdAt,required"`
-	EndedAt      float64                                         `json:"endedAt,required"`
-	Fbclid       string                                          `json:"fbclid,required"`
-	Gclid        string                                          `json:"gclid,required"`
-	LandingPage  string                                          `json:"landingPage,required"`
-	LandingTitle string                                          `json:"landingTitle,required"`
-	Network      IdentityValidatedWebhookEventDataSessionNetwork `json:"network,required"`
-	Pid          string                                          `json:"pid,required"`
-	Referrer     string                                          `json:"referrer,required"`
-	Screen       IdentityValidatedWebhookEventDataSessionScreen  `json:"screen,required"`
-	Sid          string                                          `json:"sid,required"`
-	Tenant       string                                          `json:"tenant,required"`
-	Timezone     string                                          `json:"timezone,required"`
-	UserAgent    string                                          `json:"userAgent,required"`
-	Utm          IdentityValidatedWebhookEventDataSessionUtm     `json:"utm,required"`
-	Vid          string                                          `json:"vid,required"`
+	CreatedAt    float64                                         `json:"createdAt" api:"required"`
+	EndedAt      float64                                         `json:"endedAt" api:"required"`
+	Fbclid       string                                          `json:"fbclid" api:"required"`
+	Gclid        string                                          `json:"gclid" api:"required"`
+	LandingPage  string                                          `json:"landingPage" api:"required"`
+	LandingTitle string                                          `json:"landingTitle" api:"required"`
+	Network      IdentityValidatedWebhookEventDataSessionNetwork `json:"network" api:"required"`
+	Pid          string                                          `json:"pid" api:"required"`
+	Referrer     string                                          `json:"referrer" api:"required"`
+	Screen       IdentityValidatedWebhookEventDataSessionScreen  `json:"screen" api:"required"`
+	Sid          string                                          `json:"sid" api:"required"`
+	Tenant       string                                          `json:"tenant" api:"required"`
+	Timezone     string                                          `json:"timezone" api:"required"`
+	UserAgent    string                                          `json:"userAgent" api:"required"`
+	Utm          IdentityValidatedWebhookEventDataSessionUtm     `json:"utm" api:"required"`
+	Vid          string                                          `json:"vid" api:"required"`
 	Options      map[string]any                                  `json:"options"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -2056,20 +2056,20 @@ func (r *IdentityValidatedWebhookEventDataSession) UnmarshalJSON(data []byte) er
 }
 
 type IdentityValidatedWebhookEventDataSessionNetwork struct {
-	Asn           IdentityValidatedWebhookEventDataSessionNetworkAsn           `json:"asn,required"`
-	BotManagement IdentityValidatedWebhookEventDataSessionNetworkBotManagement `json:"botManagement,required"`
-	City          string                                                       `json:"city,required"`
-	Colo          string                                                       `json:"colo,required"`
-	Continent     string                                                       `json:"continent,required"`
-	Country       string                                                       `json:"country,required"`
-	IP            string                                                       `json:"ip,required"`
-	IsEu          bool                                                         `json:"isEU,required"`
-	Latitude      string                                                       `json:"latitude,required"`
-	Longitude     string                                                       `json:"longitude,required"`
-	MetroCode     string                                                       `json:"metroCode,required"`
-	PostalCode    string                                                       `json:"postalCode,required"`
-	Region        string                                                       `json:"region,required"`
-	RegionCode    string                                                       `json:"regionCode,required"`
+	Asn           IdentityValidatedWebhookEventDataSessionNetworkAsn           `json:"asn" api:"required"`
+	BotManagement IdentityValidatedWebhookEventDataSessionNetworkBotManagement `json:"botManagement" api:"required"`
+	City          string                                                       `json:"city" api:"required"`
+	Colo          string                                                       `json:"colo" api:"required"`
+	Continent     string                                                       `json:"continent" api:"required"`
+	Country       string                                                       `json:"country" api:"required"`
+	IP            string                                                       `json:"ip" api:"required"`
+	IsEu          bool                                                         `json:"isEU" api:"required"`
+	Latitude      string                                                       `json:"latitude" api:"required"`
+	Longitude     string                                                       `json:"longitude" api:"required"`
+	MetroCode     string                                                       `json:"metroCode" api:"required"`
+	PostalCode    string                                                       `json:"postalCode" api:"required"`
+	Region        string                                                       `json:"region" api:"required"`
+	RegionCode    string                                                       `json:"regionCode" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Asn           respjson.Field
@@ -2098,8 +2098,8 @@ func (r *IdentityValidatedWebhookEventDataSessionNetwork) UnmarshalJSON(data []b
 }
 
 type IdentityValidatedWebhookEventDataSessionNetworkAsn struct {
-	Code float64 `json:"code,required"`
-	Name string  `json:"name,required"`
+	Code float64 `json:"code" api:"required"`
+	Name string  `json:"name" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -2116,10 +2116,10 @@ func (r *IdentityValidatedWebhookEventDataSessionNetworkAsn) UnmarshalJSON(data 
 }
 
 type IdentityValidatedWebhookEventDataSessionNetworkBotManagement struct {
-	CorporateProxy      bool    `json:"corporateProxy,required"`
-	Score               float64 `json:"score,required"`
-	VerifiedBot         bool    `json:"verifiedBot,required"`
-	VerifiedBotCategory string  `json:"verifiedBotCategory,required"`
+	CorporateProxy      bool    `json:"corporateProxy" api:"required"`
+	Score               float64 `json:"score" api:"required"`
+	VerifiedBot         bool    `json:"verifiedBot" api:"required"`
+	VerifiedBotCategory string  `json:"verifiedBotCategory" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CorporateProxy      respjson.Field
@@ -2140,8 +2140,8 @@ func (r *IdentityValidatedWebhookEventDataSessionNetworkBotManagement) Unmarshal
 }
 
 type IdentityValidatedWebhookEventDataSessionScreen struct {
-	Height float64 `json:"height,required"`
-	Width  float64 `json:"width,required"`
+	Height float64 `json:"height" api:"required"`
+	Width  float64 `json:"width" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
@@ -2158,11 +2158,11 @@ func (r *IdentityValidatedWebhookEventDataSessionScreen) UnmarshalJSON(data []by
 }
 
 type IdentityValidatedWebhookEventDataSessionUtm struct {
-	Campaign string `json:"campaign,required"`
-	Content  string `json:"content,required"`
-	Medium   string `json:"medium,required"`
-	Source   string `json:"source,required"`
-	Term     string `json:"term,required"`
+	Campaign string `json:"campaign" api:"required"`
+	Content  string `json:"content" api:"required"`
+	Medium   string `json:"medium" api:"required"`
+	Source   string `json:"source" api:"required"`
+	Term     string `json:"term" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Campaign    respjson.Field
@@ -2182,11 +2182,11 @@ func (r *IdentityValidatedWebhookEventDataSessionUtm) UnmarshalJSON(data []byte)
 }
 
 type IdentityValidatedWebhookEventDataValidation struct {
-	Email    string                                           `json:"email,required"`
-	Error    IdentityValidatedWebhookEventDataValidationError `json:"error,required"`
-	Provider string                                           `json:"provider,required"`
+	Email    string                                           `json:"email" api:"required"`
+	Error    IdentityValidatedWebhookEventDataValidationError `json:"error" api:"required"`
+	Provider string                                           `json:"provider" api:"required"`
 	// Any of "valid", "invalid", "catch_all", "valid_catch_all".
-	Validity string `json:"validity,required"`
+	Validity string `json:"validity" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Email       respjson.Field
@@ -2205,8 +2205,8 @@ func (r *IdentityValidatedWebhookEventDataValidation) UnmarshalJSON(data []byte)
 }
 
 type IdentityValidatedWebhookEventDataValidationError struct {
-	Code    string `json:"code,required"`
-	Message string `json:"message,required"`
+	Code    string `json:"code" api:"required"`
+	Message string `json:"message" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -2224,12 +2224,12 @@ func (r *IdentityValidatedWebhookEventDataValidationError) UnmarshalJSON(data []
 
 type IdentitySessionFinalizedWebhookEvent struct {
 	// Unique event identifier
-	ID string `json:"id,required"`
+	ID string `json:"id" api:"required"`
 	// Unix timestamp (milliseconds) when the event was created
-	Created int64                                    `json:"created,required"`
-	Data    IdentitySessionFinalizedWebhookEventData `json:"data,required"`
+	Created int64                                    `json:"created" api:"required"`
+	Data    IdentitySessionFinalizedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentitySessionFinalized `json:"type,required"`
+	Type constant.IdentitySessionFinalized `json:"type" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -2248,11 +2248,11 @@ func (r *IdentitySessionFinalizedWebhookEvent) UnmarshalJSON(data []byte) error 
 }
 
 type IdentitySessionFinalizedWebhookEventData struct {
-	Enrichment     IdentitySessionFinalizedWebhookEventDataEnrichment `json:"enrichment,required"`
-	EventCount     float64                                            `json:"eventCount,required"`
-	FinalizedAt    float64                                            `json:"finalizedAt,required"`
-	Session        IdentitySessionFinalizedWebhookEventDataSession    `json:"session,required"`
-	SessionEndedAt float64                                            `json:"sessionEndedAt,required"`
+	Enrichment     IdentitySessionFinalizedWebhookEventDataEnrichment `json:"enrichment" api:"required"`
+	EventCount     float64                                            `json:"eventCount" api:"required"`
+	FinalizedAt    float64                                            `json:"finalizedAt" api:"required"`
+	Session        IdentitySessionFinalizedWebhookEventDataSession    `json:"session" api:"required"`
+	SessionEndedAt float64                                            `json:"sessionEndedAt" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Enrichment     respjson.Field
@@ -2272,8 +2272,8 @@ func (r *IdentitySessionFinalizedWebhookEventData) UnmarshalJSON(data []byte) er
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichment struct {
-	Companies        []IdentitySessionFinalizedWebhookEventDataEnrichmentCompany         `json:"companies,required"`
-	Person           IdentitySessionFinalizedWebhookEventDataEnrichmentPerson            `json:"person,required"`
+	Companies        []IdentitySessionFinalizedWebhookEventDataEnrichmentCompany         `json:"companies" api:"required"`
+	Person           IdentitySessionFinalizedWebhookEventDataEnrichmentPerson            `json:"person" api:"required"`
 	EmailValidations []IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidation `json:"emailValidations"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -2293,29 +2293,29 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichment) UnmarshalJSON(data 
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompany struct {
 	// Any of "full".
-	Type       string `json:"_type,required"`
-	EnrichedAt string `json:"enrichedAt,required"`
-	Name       string `json:"name,required"`
+	Type       string `json:"_type" api:"required"`
+	EnrichedAt string `json:"enrichedAt" api:"required"`
+	Name       string `json:"name" api:"required"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                                     `json:"provider,required"`
-	Address           IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyAddress           `json:"address,nullable"`
-	Description       string                                                                     `json:"description,nullable"`
-	Domain            string                                                                     `json:"domain,nullable"`
-	EmployeeCount     float64                                                                    `json:"employeeCount,nullable"`
-	EstimatedRevenue  IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyEstimatedRevenue  `json:"estimatedRevenue,nullable"`
-	FoundedYear       float64                                                                    `json:"foundedYear,nullable"`
-	Funding           IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyFunding           `json:"funding,nullable"`
-	Headcount         IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcount         `json:"headcount,nullable"`
-	Industry          string                                                                     `json:"industry,nullable"`
-	LinkedinFollowers IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyLinkedinFollowers `json:"linkedinFollowers,nullable"`
-	LinkedinID        string                                                                     `json:"linkedinId,nullable"`
-	LinkedinURL       string                                                                     `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL           string                                                                     `json:"logoUrl,nullable" format:"uri"`
-	Seo               IdentitySessionFinalizedWebhookEventDataEnrichmentCompanySeo               `json:"seo,nullable"`
+	Provider          string                                                                     `json:"provider" api:"required"`
+	Address           IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyAddress           `json:"address" api:"nullable"`
+	Description       string                                                                     `json:"description" api:"nullable"`
+	Domain            string                                                                     `json:"domain" api:"nullable"`
+	EmployeeCount     float64                                                                    `json:"employeeCount" api:"nullable"`
+	EstimatedRevenue  IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyEstimatedRevenue  `json:"estimatedRevenue" api:"nullable"`
+	FoundedYear       float64                                                                    `json:"foundedYear" api:"nullable"`
+	Funding           IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyFunding           `json:"funding" api:"nullable"`
+	Headcount         IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcount         `json:"headcount" api:"nullable"`
+	Industry          string                                                                     `json:"industry" api:"nullable"`
+	LinkedinFollowers IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyLinkedinFollowers `json:"linkedinFollowers" api:"nullable"`
+	LinkedinID        string                                                                     `json:"linkedinId" api:"nullable"`
+	LinkedinURL       string                                                                     `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL           string                                                                     `json:"logoUrl" api:"nullable" format:"uri"`
+	Seo               IdentitySessionFinalizedWebhookEventDataEnrichmentCompanySeo               `json:"seo" api:"nullable"`
 	Specialties       []string                                                                   `json:"specialties"`
-	Taxonomy          IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyTaxonomy          `json:"taxonomy,nullable"`
-	Website           string                                                                     `json:"website,nullable" format:"uri"`
-	WebTraffic        IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTraffic        `json:"webTraffic,nullable"`
+	Taxonomy          IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyTaxonomy          `json:"taxonomy" api:"nullable"`
+	Website           string                                                                     `json:"website" api:"nullable" format:"uri"`
+	WebTraffic        IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTraffic        `json:"webTraffic" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type              respjson.Field
@@ -2354,11 +2354,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompany) UnmarshalJSO
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -2381,8 +2381,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyAddress) Unmar
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyEstimatedRevenue struct {
 	Currency string  `json:"currency"`
-	Max      float64 `json:"max,nullable"`
-	Min      float64 `json:"min,nullable"`
+	Max      float64 `json:"max" api:"nullable"`
+	Min      float64 `json:"min" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Currency    respjson.Field
@@ -2402,11 +2402,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyEstimatedReven
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyFunding struct {
-	DaysSinceLastRound float64  `json:"daysSinceLastRound,nullable"`
+	DaysSinceLastRound float64  `json:"daysSinceLastRound" api:"nullable"`
 	Investors          []string `json:"investors"`
-	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd,nullable"`
-	LastRoundType      string   `json:"lastRoundType,nullable"`
-	TotalRaisedUsd     float64  `json:"totalRaisedUsd,nullable"`
+	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd" api:"nullable"`
+	LastRoundType      string   `json:"lastRoundType" api:"nullable"`
+	TotalRaisedUsd     float64  `json:"totalRaisedUsd" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DaysSinceLastRound respjson.Field
@@ -2428,8 +2428,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyFunding) Unmar
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcount struct {
-	Growth IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcountGrowth `json:"growth,nullable"`
-	Total  float64                                                                  `json:"total,nullable"`
+	Growth IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcountGrowth `json:"growth" api:"nullable"`
+	Total  float64                                                                  `json:"total" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Growth      respjson.Field
@@ -2448,9 +2448,9 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcount) Unm
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcountGrowth struct {
-	Mom float64 `json:"mom,nullable"`
-	Qoq float64 `json:"qoq,nullable"`
-	Yoy float64 `json:"yoy,nullable"`
+	Mom float64 `json:"mom" api:"nullable"`
+	Qoq float64 `json:"qoq" api:"nullable"`
+	Yoy float64 `json:"yoy" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Mom         respjson.Field
@@ -2470,10 +2470,10 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyHeadcountGrowt
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyLinkedinFollowers struct {
-	Count            float64 `json:"count,nullable"`
-	MomGrowthPercent float64 `json:"momGrowthPercent,nullable"`
-	QoqGrowthPercent float64 `json:"qoqGrowthPercent,nullable"`
-	YoyGrowthPercent float64 `json:"yoyGrowthPercent,nullable"`
+	Count            float64 `json:"count" api:"nullable"`
+	MomGrowthPercent float64 `json:"momGrowthPercent" api:"nullable"`
+	QoqGrowthPercent float64 `json:"qoqGrowthPercent" api:"nullable"`
+	YoyGrowthPercent float64 `json:"yoyGrowthPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Count            respjson.Field
@@ -2494,13 +2494,13 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyLinkedinFollow
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanySeo struct {
-	AverageAdRank        float64 `json:"averageAdRank,nullable"`
-	AverageOrganicRank   float64 `json:"averageOrganicRank,nullable"`
-	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend,nullable"`
-	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks,nullable"`
-	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue,nullable"`
-	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks,nullable"`
-	TotalOrganicKeywords float64 `json:"totalOrganicKeywords,nullable"`
+	AverageAdRank        float64 `json:"averageAdRank" api:"nullable"`
+	AverageOrganicRank   float64 `json:"averageOrganicRank" api:"nullable"`
+	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend" api:"nullable"`
+	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks" api:"nullable"`
+	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue" api:"nullable"`
+	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks" api:"nullable"`
+	TotalOrganicKeywords float64 `json:"totalOrganicKeywords" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AverageAdRank        respjson.Field
@@ -2524,7 +2524,7 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanySeo) Unmarshal
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyTaxonomy struct {
-	LinkedinIndustry    string   `json:"linkedinIndustry,nullable"`
+	LinkedinIndustry    string   `json:"linkedinIndustry" api:"nullable"`
 	LinkedinSpecialties []string `json:"linkedinSpecialties"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -2544,10 +2544,10 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyTaxonomy) Unma
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTraffic struct {
-	MomGrowthPercent float64                                                                           `json:"momGrowthPercent,nullable"`
-	MonthlyVisitors  float64                                                                           `json:"monthlyVisitors,nullable"`
-	QoqGrowthPercent float64                                                                           `json:"qoqGrowthPercent,nullable"`
-	TrafficSources   IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources `json:"trafficSources,nullable"`
+	MomGrowthPercent float64                                                                           `json:"momGrowthPercent" api:"nullable"`
+	MonthlyVisitors  float64                                                                           `json:"monthlyVisitors" api:"nullable"`
+	QoqGrowthPercent float64                                                                           `json:"qoqGrowthPercent" api:"nullable"`
+	TrafficSources   IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources `json:"trafficSources" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		MomGrowthPercent respjson.Field
@@ -2568,11 +2568,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTraffic) Un
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTrafficTrafficSources struct {
-	DirectPercent       float64 `json:"directPercent,nullable"`
-	PaidReferralPercent float64 `json:"paidReferralPercent,nullable"`
-	ReferralPercent     float64 `json:"referralPercent,nullable"`
-	SearchPercent       float64 `json:"searchPercent,nullable"`
-	SocialPercent       float64 `json:"socialPercent,nullable"`
+	DirectPercent       float64 `json:"directPercent" api:"nullable"`
+	PaidReferralPercent float64 `json:"paidReferralPercent" api:"nullable"`
+	ReferralPercent     float64 `json:"referralPercent" api:"nullable"`
+	SearchPercent       float64 `json:"searchPercent" api:"nullable"`
+	SocialPercent       float64 `json:"socialPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DirectPercent       respjson.Field
@@ -2594,25 +2594,25 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentCompanyWebTrafficTraf
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPerson struct {
-	EnrichedAt  string `json:"enrichedAt,required"`
-	LinkedinURL string `json:"linkedinUrl,required" format:"uri"`
+	EnrichedAt  string `json:"enrichedAt" api:"required"`
+	LinkedinURL string `json:"linkedinUrl" api:"required" format:"uri"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                               `json:"provider,required"`
-	Connections       float64                                                              `json:"connections,nullable"`
+	Provider          string                                                               `json:"provider" api:"required"`
+	Connections       float64                                                              `json:"connections" api:"nullable"`
 	Education         []IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEducation  `json:"education"`
-	Email             string                                                               `json:"email,nullable" format:"email"`
+	Email             string                                                               `json:"email" api:"nullable" format:"email"`
 	Employments       []IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmployment `json:"employments"`
 	Experience        []IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperience `json:"experience"`
-	FirstName         string                                                               `json:"firstName,nullable"`
-	FullName          string                                                               `json:"fullName,nullable"`
-	Headline          string                                                               `json:"headline,nullable"`
+	FirstName         string                                                               `json:"firstName" api:"nullable"`
+	FullName          string                                                               `json:"fullName" api:"nullable"`
+	Headline          string                                                               `json:"headline" api:"nullable"`
 	Languages         []string                                                             `json:"languages"`
-	LastName          string                                                               `json:"lastName,nullable"`
-	LinkedinID        string                                                               `json:"linkedinId,nullable"`
-	Location          IdentitySessionFinalizedWebhookEventDataEnrichmentPersonLocation     `json:"location,nullable"`
-	ProfilePictureURL string                                                               `json:"profilePictureUrl,nullable" format:"uri"`
+	LastName          string                                                               `json:"lastName" api:"nullable"`
+	LinkedinID        string                                                               `json:"linkedinId" api:"nullable"`
+	Location          IdentitySessionFinalizedWebhookEventDataEnrichmentPersonLocation     `json:"location" api:"nullable"`
+	ProfilePictureURL string                                                               `json:"profilePictureUrl" api:"nullable" format:"uri"`
 	Skills            []string                                                             `json:"skills"`
-	Summary           string                                                               `json:"summary,nullable"`
+	Summary           string                                                               `json:"summary" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		EnrichedAt        respjson.Field
@@ -2645,13 +2645,13 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPerson) UnmarshalJSON
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEducation struct {
-	InstituteName       string `json:"instituteName,required"`
-	Degree              string `json:"degree,nullable"`
-	EndDate             string `json:"endDate,nullable"`
-	FieldOfStudy        string `json:"fieldOfStudy,nullable"`
-	InstituteLinkedinID string `json:"instituteLinkedinId,nullable"`
-	InstituteLogoURL    string `json:"instituteLogoUrl,nullable" format:"uri"`
-	StartDate           string `json:"startDate,nullable"`
+	InstituteName       string `json:"instituteName" api:"required"`
+	Degree              string `json:"degree" api:"nullable"`
+	EndDate             string `json:"endDate" api:"nullable"`
+	FieldOfStudy        string `json:"fieldOfStudy" api:"nullable"`
+	InstituteLinkedinID string `json:"instituteLinkedinId" api:"nullable"`
+	InstituteLogoURL    string `json:"instituteLogoUrl" api:"nullable" format:"uri"`
+	StartDate           string `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		InstituteName       respjson.Field
@@ -2675,12 +2675,12 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEducation) Unma
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmployment struct {
-	Company     IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompany `json:"company,required"`
-	Title       string                                                                    `json:"title,required"`
-	Description string                                                                    `json:"description,nullable"`
-	EndDate     string                                                                    `json:"endDate,nullable"`
-	Location    string                                                                    `json:"location,nullable"`
-	StartDate   string                                                                    `json:"startDate,nullable"`
+	Company     IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompany `json:"company" api:"required"`
+	Title       string                                                                    `json:"title" api:"required"`
+	Description string                                                                    `json:"description" api:"nullable"`
+	EndDate     string                                                                    `json:"endDate" api:"nullable"`
+	Location    string                                                                    `json:"location" api:"nullable"`
+	StartDate   string                                                                    `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Company     respjson.Field
@@ -2704,29 +2704,29 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmployment) Unm
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompany struct {
 	// Any of "full".
-	Type       string `json:"_type,required"`
-	EnrichedAt string `json:"enrichedAt,required"`
-	Name       string `json:"name,required"`
+	Type       string `json:"_type" api:"required"`
+	EnrichedAt string `json:"enrichedAt" api:"required"`
+	Name       string `json:"name" api:"required"`
 	// Any of "xK9mP", "qR7nL".
-	Provider          string                                                                                     `json:"provider,required"`
-	Address           IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress           `json:"address,nullable"`
-	Description       string                                                                                     `json:"description,nullable"`
-	Domain            string                                                                                     `json:"domain,nullable"`
-	EmployeeCount     float64                                                                                    `json:"employeeCount,nullable"`
-	EstimatedRevenue  IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue  `json:"estimatedRevenue,nullable"`
-	FoundedYear       float64                                                                                    `json:"foundedYear,nullable"`
-	Funding           IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding           `json:"funding,nullable"`
-	Headcount         IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount         `json:"headcount,nullable"`
-	Industry          string                                                                                     `json:"industry,nullable"`
-	LinkedinFollowers IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers `json:"linkedinFollowers,nullable"`
-	LinkedinID        string                                                                                     `json:"linkedinId,nullable"`
-	LinkedinURL       string                                                                                     `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL           string                                                                                     `json:"logoUrl,nullable" format:"uri"`
-	Seo               IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanySeo               `json:"seo,nullable"`
+	Provider          string                                                                                     `json:"provider" api:"required"`
+	Address           IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress           `json:"address" api:"nullable"`
+	Description       string                                                                                     `json:"description" api:"nullable"`
+	Domain            string                                                                                     `json:"domain" api:"nullable"`
+	EmployeeCount     float64                                                                                    `json:"employeeCount" api:"nullable"`
+	EstimatedRevenue  IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue  `json:"estimatedRevenue" api:"nullable"`
+	FoundedYear       float64                                                                                    `json:"foundedYear" api:"nullable"`
+	Funding           IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding           `json:"funding" api:"nullable"`
+	Headcount         IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount         `json:"headcount" api:"nullable"`
+	Industry          string                                                                                     `json:"industry" api:"nullable"`
+	LinkedinFollowers IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers `json:"linkedinFollowers" api:"nullable"`
+	LinkedinID        string                                                                                     `json:"linkedinId" api:"nullable"`
+	LinkedinURL       string                                                                                     `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL           string                                                                                     `json:"logoUrl" api:"nullable" format:"uri"`
+	Seo               IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanySeo               `json:"seo" api:"nullable"`
 	Specialties       []string                                                                                   `json:"specialties"`
-	Taxonomy          IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy          `json:"taxonomy,nullable"`
-	Website           string                                                                                     `json:"website,nullable" format:"uri"`
-	WebTraffic        IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic        `json:"webTraffic,nullable"`
+	Taxonomy          IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy          `json:"taxonomy" api:"nullable"`
+	Website           string                                                                                     `json:"website" api:"nullable" format:"uri"`
+	WebTraffic        IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic        `json:"webTraffic" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type              respjson.Field
@@ -2765,11 +2765,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -2792,8 +2792,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyEstimatedRevenue struct {
 	Currency string  `json:"currency"`
-	Max      float64 `json:"max,nullable"`
-	Min      float64 `json:"min,nullable"`
+	Max      float64 `json:"max" api:"nullable"`
+	Min      float64 `json:"min" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Currency    respjson.Field
@@ -2813,11 +2813,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyFunding struct {
-	DaysSinceLastRound float64  `json:"daysSinceLastRound,nullable"`
+	DaysSinceLastRound float64  `json:"daysSinceLastRound" api:"nullable"`
 	Investors          []string `json:"investors"`
-	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd,nullable"`
-	LastRoundType      string   `json:"lastRoundType,nullable"`
-	TotalRaisedUsd     float64  `json:"totalRaisedUsd,nullable"`
+	LastRoundAmountUsd float64  `json:"lastRoundAmountUsd" api:"nullable"`
+	LastRoundType      string   `json:"lastRoundType" api:"nullable"`
+	TotalRaisedUsd     float64  `json:"totalRaisedUsd" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DaysSinceLastRound respjson.Field
@@ -2839,8 +2839,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcount struct {
-	Growth IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth `json:"growth,nullable"`
-	Total  float64                                                                                  `json:"total,nullable"`
+	Growth IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth `json:"growth" api:"nullable"`
+	Total  float64                                                                                  `json:"total" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Growth      respjson.Field
@@ -2859,9 +2859,9 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyHeadcountGrowth struct {
-	Mom float64 `json:"mom,nullable"`
-	Qoq float64 `json:"qoq,nullable"`
-	Yoy float64 `json:"yoy,nullable"`
+	Mom float64 `json:"mom" api:"nullable"`
+	Qoq float64 `json:"qoq" api:"nullable"`
+	Yoy float64 `json:"yoy" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Mom         respjson.Field
@@ -2881,10 +2881,10 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyLinkedinFollowers struct {
-	Count            float64 `json:"count,nullable"`
-	MomGrowthPercent float64 `json:"momGrowthPercent,nullable"`
-	QoqGrowthPercent float64 `json:"qoqGrowthPercent,nullable"`
-	YoyGrowthPercent float64 `json:"yoyGrowthPercent,nullable"`
+	Count            float64 `json:"count" api:"nullable"`
+	MomGrowthPercent float64 `json:"momGrowthPercent" api:"nullable"`
+	QoqGrowthPercent float64 `json:"qoqGrowthPercent" api:"nullable"`
+	YoyGrowthPercent float64 `json:"yoyGrowthPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Count            respjson.Field
@@ -2905,13 +2905,13 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanySeo struct {
-	AverageAdRank        float64 `json:"averageAdRank,nullable"`
-	AverageOrganicRank   float64 `json:"averageOrganicRank,nullable"`
-	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend,nullable"`
-	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks,nullable"`
-	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue,nullable"`
-	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks,nullable"`
-	TotalOrganicKeywords float64 `json:"totalOrganicKeywords,nullable"`
+	AverageAdRank        float64 `json:"averageAdRank" api:"nullable"`
+	AverageOrganicRank   float64 `json:"averageOrganicRank" api:"nullable"`
+	MonthlyAdsSpend      float64 `json:"monthlyAdsSpend" api:"nullable"`
+	MonthlyOrganicClicks float64 `json:"monthlyOrganicClicks" api:"nullable"`
+	MonthlyOrganicValue  float64 `json:"monthlyOrganicValue" api:"nullable"`
+	MonthlyPaidClicks    float64 `json:"monthlyPaidClicks" api:"nullable"`
+	TotalOrganicKeywords float64 `json:"totalOrganicKeywords" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		AverageAdRank        respjson.Field
@@ -2935,7 +2935,7 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyTaxonomy struct {
-	LinkedinIndustry    string   `json:"linkedinIndustry,nullable"`
+	LinkedinIndustry    string   `json:"linkedinIndustry" api:"nullable"`
 	LinkedinSpecialties []string `json:"linkedinSpecialties"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -2955,10 +2955,10 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTraffic struct {
-	MomGrowthPercent float64                                                                                           `json:"momGrowthPercent,nullable"`
-	MonthlyVisitors  float64                                                                                           `json:"monthlyVisitors,nullable"`
-	QoqGrowthPercent float64                                                                                           `json:"qoqGrowthPercent,nullable"`
-	TrafficSources   IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources `json:"trafficSources,nullable"`
+	MomGrowthPercent float64                                                                                           `json:"momGrowthPercent" api:"nullable"`
+	MonthlyVisitors  float64                                                                                           `json:"monthlyVisitors" api:"nullable"`
+	QoqGrowthPercent float64                                                                                           `json:"qoqGrowthPercent" api:"nullable"`
+	TrafficSources   IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources `json:"trafficSources" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		MomGrowthPercent respjson.Field
@@ -2979,11 +2979,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompanyWebTrafficTrafficSources struct {
-	DirectPercent       float64 `json:"directPercent,nullable"`
-	PaidReferralPercent float64 `json:"paidReferralPercent,nullable"`
-	ReferralPercent     float64 `json:"referralPercent,nullable"`
-	SearchPercent       float64 `json:"searchPercent,nullable"`
-	SocialPercent       float64 `json:"socialPercent,nullable"`
+	DirectPercent       float64 `json:"directPercent" api:"nullable"`
+	PaidReferralPercent float64 `json:"paidReferralPercent" api:"nullable"`
+	ReferralPercent     float64 `json:"referralPercent" api:"nullable"`
+	SearchPercent       float64 `json:"searchPercent" api:"nullable"`
+	SocialPercent       float64 `json:"socialPercent" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		DirectPercent       respjson.Field
@@ -3005,12 +3005,12 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonEmploymentCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperience struct {
-	Company     IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompany `json:"company,required"`
-	Title       string                                                                    `json:"title,required"`
-	Description string                                                                    `json:"description,nullable"`
-	EndDate     string                                                                    `json:"endDate,nullable"`
-	Location    string                                                                    `json:"location,nullable"`
-	StartDate   string                                                                    `json:"startDate,nullable"`
+	Company     IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompany `json:"company" api:"required"`
+	Title       string                                                                    `json:"title" api:"required"`
+	Description string                                                                    `json:"description" api:"nullable"`
+	EndDate     string                                                                    `json:"endDate" api:"nullable"`
+	Location    string                                                                    `json:"location" api:"nullable"`
+	StartDate   string                                                                    `json:"startDate" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Company     respjson.Field
@@ -3034,18 +3034,18 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperience) Unm
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompany struct {
 	// Any of "basic".
-	Type          string                                                                           `json:"_type,required"`
-	Name          string                                                                           `json:"name,required"`
-	Address       IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompanyAddress `json:"address,nullable"`
-	Description   string                                                                           `json:"description,nullable"`
-	Domain        string                                                                           `json:"domain,nullable"`
-	EmployeeCount float64                                                                          `json:"employeeCount,nullable"`
-	FoundedYear   float64                                                                          `json:"foundedYear,nullable"`
-	Industry      string                                                                           `json:"industry,nullable"`
-	LinkedinID    string                                                                           `json:"linkedinId,nullable"`
-	LinkedinURL   string                                                                           `json:"linkedinUrl,nullable" format:"uri"`
-	LogoURL       string                                                                           `json:"logoUrl,nullable" format:"uri"`
-	Website       string                                                                           `json:"website,nullable" format:"uri"`
+	Type          string                                                                           `json:"_type" api:"required"`
+	Name          string                                                                           `json:"name" api:"required"`
+	Address       IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompanyAddress `json:"address" api:"nullable"`
+	Description   string                                                                           `json:"description" api:"nullable"`
+	Domain        string                                                                           `json:"domain" api:"nullable"`
+	EmployeeCount float64                                                                          `json:"employeeCount" api:"nullable"`
+	FoundedYear   float64                                                                          `json:"foundedYear" api:"nullable"`
+	Industry      string                                                                           `json:"industry" api:"nullable"`
+	LinkedinID    string                                                                           `json:"linkedinId" api:"nullable"`
+	LinkedinURL   string                                                                           `json:"linkedinUrl" api:"nullable" format:"uri"`
+	LogoURL       string                                                                           `json:"logoUrl" api:"nullable" format:"uri"`
+	Website       string                                                                           `json:"website" api:"nullable" format:"uri"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Type          respjson.Field
@@ -3074,11 +3074,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompanyAddress struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -3100,12 +3100,12 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonExperienceCompa
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentPersonLocation struct {
-	Country     string `json:"country,nullable"`
-	CountryCode string `json:"countryCode,nullable"`
-	Locality    string `json:"locality,nullable"`
-	PostalCode  string `json:"postalCode,nullable"`
-	Raw         string `json:"raw,nullable"`
-	Region      string `json:"region,nullable"`
+	Country     string `json:"country" api:"nullable"`
+	CountryCode string `json:"countryCode" api:"nullable"`
+	Locality    string `json:"locality" api:"nullable"`
+	PostalCode  string `json:"postalCode" api:"nullable"`
+	Raw         string `json:"raw" api:"nullable"`
+	Region      string `json:"region" api:"nullable"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Country     respjson.Field
@@ -3128,11 +3128,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentPersonLocation) Unmar
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidation struct {
-	Email    string                                                                 `json:"email,required"`
-	Error    IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidationError `json:"error,required"`
-	Provider string                                                                 `json:"provider,required"`
+	Email    string                                                                 `json:"email" api:"required"`
+	Error    IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidationError `json:"error" api:"required"`
+	Provider string                                                                 `json:"provider" api:"required"`
 	// Any of "valid", "invalid", "catch_all", "valid_catch_all".
-	Validity string `json:"validity,required"`
+	Validity string `json:"validity" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Email       respjson.Field
@@ -3153,8 +3153,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidation) Unma
 }
 
 type IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidationError struct {
-	Code    string `json:"code,required"`
-	Message string `json:"message,required"`
+	Code    string `json:"code" api:"required"`
+	Message string `json:"message" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -3173,24 +3173,24 @@ func (r *IdentitySessionFinalizedWebhookEventDataEnrichmentEmailValidationError)
 }
 
 type IdentitySessionFinalizedWebhookEventDataSession struct {
-	CreatedAt    float64                                                     `json:"createdAt,required"`
-	EndedAt      float64                                                     `json:"endedAt,required"`
-	Events       []IdentitySessionFinalizedWebhookEventDataSessionEvent      `json:"events,required"`
-	Fbclid       string                                                      `json:"fbclid,required"`
-	Gclid        string                                                      `json:"gclid,required"`
-	LandingPage  string                                                      `json:"landingPage,required"`
-	LandingTitle string                                                      `json:"landingTitle,required"`
-	LastActivity float64                                                     `json:"lastActivity,required"`
-	Network      IdentitySessionFinalizedWebhookEventDataSessionNetwork      `json:"network,required"`
-	Pid          string                                                      `json:"pid,required"`
-	Referrer     string                                                      `json:"referrer,required"`
-	Screen       IdentitySessionFinalizedWebhookEventDataSessionScreen       `json:"screen,required"`
-	Sid          string                                                      `json:"sid,required"`
-	Tenant       string                                                      `json:"tenant,required"`
-	Timezone     string                                                      `json:"timezone,required"`
-	UserAgent    string                                                      `json:"userAgent,required"`
-	Utm          IdentitySessionFinalizedWebhookEventDataSessionUtm          `json:"utm,required"`
-	Vid          string                                                      `json:"vid,required"`
+	CreatedAt    float64                                                     `json:"createdAt" api:"required"`
+	EndedAt      float64                                                     `json:"endedAt" api:"required"`
+	Events       []IdentitySessionFinalizedWebhookEventDataSessionEvent      `json:"events" api:"required"`
+	Fbclid       string                                                      `json:"fbclid" api:"required"`
+	Gclid        string                                                      `json:"gclid" api:"required"`
+	LandingPage  string                                                      `json:"landingPage" api:"required"`
+	LandingTitle string                                                      `json:"landingTitle" api:"required"`
+	LastActivity float64                                                     `json:"lastActivity" api:"required"`
+	Network      IdentitySessionFinalizedWebhookEventDataSessionNetwork      `json:"network" api:"required"`
+	Pid          string                                                      `json:"pid" api:"required"`
+	Referrer     string                                                      `json:"referrer" api:"required"`
+	Screen       IdentitySessionFinalizedWebhookEventDataSessionScreen       `json:"screen" api:"required"`
+	Sid          string                                                      `json:"sid" api:"required"`
+	Tenant       string                                                      `json:"tenant" api:"required"`
+	Timezone     string                                                      `json:"timezone" api:"required"`
+	UserAgent    string                                                      `json:"userAgent" api:"required"`
+	Utm          IdentitySessionFinalizedWebhookEventDataSessionUtm          `json:"utm" api:"required"`
+	Vid          string                                                      `json:"vid" api:"required"`
 	Enrichments  []IdentitySessionFinalizedWebhookEventDataSessionEnrichment `json:"enrichments"`
 	Options      map[string]any                                              `json:"options"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
@@ -3227,14 +3227,14 @@ func (r *IdentitySessionFinalizedWebhookEventDataSession) UnmarshalJSON(data []b
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionEvent struct {
-	Outlink string         `json:"outlink,required"`
-	Props   map[string]any `json:"props,required"`
-	Ref     string         `json:"ref,required"`
-	Signal  string         `json:"signal,required"`
-	Title   string         `json:"title,required"`
-	Ts      float64        `json:"ts,required"`
-	URL     string         `json:"url,required"`
-	V       string         `json:"v,required"`
+	Outlink string         `json:"outlink" api:"required"`
+	Props   map[string]any `json:"props" api:"required"`
+	Ref     string         `json:"ref" api:"required"`
+	Signal  string         `json:"signal" api:"required"`
+	Title   string         `json:"title" api:"required"`
+	Ts      float64        `json:"ts" api:"required"`
+	URL     string         `json:"url" api:"required"`
+	V       string         `json:"v" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Outlink     respjson.Field
@@ -3257,20 +3257,20 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionEvent) UnmarshalJSON(dat
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionNetwork struct {
-	Asn           IdentitySessionFinalizedWebhookEventDataSessionNetworkAsn           `json:"asn,required"`
-	BotManagement IdentitySessionFinalizedWebhookEventDataSessionNetworkBotManagement `json:"botManagement,required"`
-	City          string                                                              `json:"city,required"`
-	Colo          string                                                              `json:"colo,required"`
-	Continent     string                                                              `json:"continent,required"`
-	Country       string                                                              `json:"country,required"`
-	IP            string                                                              `json:"ip,required"`
-	IsEu          bool                                                                `json:"isEU,required"`
-	Latitude      string                                                              `json:"latitude,required"`
-	Longitude     string                                                              `json:"longitude,required"`
-	MetroCode     string                                                              `json:"metroCode,required"`
-	PostalCode    string                                                              `json:"postalCode,required"`
-	Region        string                                                              `json:"region,required"`
-	RegionCode    string                                                              `json:"regionCode,required"`
+	Asn           IdentitySessionFinalizedWebhookEventDataSessionNetworkAsn           `json:"asn" api:"required"`
+	BotManagement IdentitySessionFinalizedWebhookEventDataSessionNetworkBotManagement `json:"botManagement" api:"required"`
+	City          string                                                              `json:"city" api:"required"`
+	Colo          string                                                              `json:"colo" api:"required"`
+	Continent     string                                                              `json:"continent" api:"required"`
+	Country       string                                                              `json:"country" api:"required"`
+	IP            string                                                              `json:"ip" api:"required"`
+	IsEu          bool                                                                `json:"isEU" api:"required"`
+	Latitude      string                                                              `json:"latitude" api:"required"`
+	Longitude     string                                                              `json:"longitude" api:"required"`
+	MetroCode     string                                                              `json:"metroCode" api:"required"`
+	PostalCode    string                                                              `json:"postalCode" api:"required"`
+	Region        string                                                              `json:"region" api:"required"`
+	RegionCode    string                                                              `json:"regionCode" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Asn           respjson.Field
@@ -3299,8 +3299,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionNetwork) UnmarshalJSON(d
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionNetworkAsn struct {
-	Code float64 `json:"code,required"`
-	Name string  `json:"name,required"`
+	Code float64 `json:"code" api:"required"`
+	Name string  `json:"name" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Code        respjson.Field
@@ -3319,10 +3319,10 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionNetworkAsn) UnmarshalJSO
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionNetworkBotManagement struct {
-	CorporateProxy      bool    `json:"corporateProxy,required"`
-	Score               float64 `json:"score,required"`
-	VerifiedBot         bool    `json:"verifiedBot,required"`
-	VerifiedBotCategory string  `json:"verifiedBotCategory,required"`
+	CorporateProxy      bool    `json:"corporateProxy" api:"required"`
+	Score               float64 `json:"score" api:"required"`
+	VerifiedBot         bool    `json:"verifiedBot" api:"required"`
+	VerifiedBotCategory string  `json:"verifiedBotCategory" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CorporateProxy      respjson.Field
@@ -3343,8 +3343,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionNetworkBotManagement) Un
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionScreen struct {
-	Height float64 `json:"height,required"`
-	Width  float64 `json:"width,required"`
+	Height float64 `json:"height" api:"required"`
+	Width  float64 `json:"width" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Height      respjson.Field
@@ -3361,11 +3361,11 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionScreen) UnmarshalJSON(da
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionUtm struct {
-	Campaign string `json:"campaign,required"`
-	Content  string `json:"content,required"`
-	Medium   string `json:"medium,required"`
-	Source   string `json:"source,required"`
-	Term     string `json:"term,required"`
+	Campaign string `json:"campaign" api:"required"`
+	Content  string `json:"content" api:"required"`
+	Medium   string `json:"medium" api:"required"`
+	Source   string `json:"source" api:"required"`
+	Term     string `json:"term" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Campaign    respjson.Field
@@ -3385,8 +3385,8 @@ func (r *IdentitySessionFinalizedWebhookEventDataSessionUtm) UnmarshalJSON(data 
 }
 
 type IdentitySessionFinalizedWebhookEventDataSessionEnrichment struct {
-	EnrichedAt     float64 `json:"enrichedAt,required"`
-	EnrichmentData string  `json:"enrichmentData,required"`
+	EnrichedAt     float64 `json:"enrichedAt" api:"required"`
+	EnrichmentData string  `json:"enrichmentData" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		EnrichedAt     respjson.Field

@@ -45,11 +45,11 @@ type HealthCheckResponse struct {
 	// Service health status
 	//
 	// Any of "ok", "degraded", "unhealthy".
-	Status HealthCheckResponseStatus `json:"status,required"`
+	Status HealthCheckResponseStatus `json:"status" api:"required"`
 	// Current server timestamp (ISO)
-	Timestamp time.Time `json:"timestamp,required" format:"date-time"`
+	Timestamp time.Time `json:"timestamp" api:"required" format:"date-time"`
 	// API version
-	Version string `json:"version,required"`
+	Version string `json:"version" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Status      respjson.Field
