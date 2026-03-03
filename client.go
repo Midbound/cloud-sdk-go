@@ -16,7 +16,8 @@ import (
 // interacting with the midbound-cloud API. You should not instantiate this client
 // directly, and instead use the [NewClient] method instead.
 type Client struct {
-	Options  []option.RequestOption
+	Options []option.RequestOption
+	// Health check endpoints
 	Health   HealthService
 	Webhooks WebhookService
 }

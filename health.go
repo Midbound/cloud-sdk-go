@@ -14,6 +14,8 @@ import (
 	"github.com/Midbound/cloud-sdk-go/packages/respjson"
 )
 
+// Health check endpoints
+//
 // HealthService contains methods and other services that help with interacting
 // with the midbound-cloud API.
 //
