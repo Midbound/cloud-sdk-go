@@ -77,7 +77,7 @@ type IdentityResolvedWebhookEvent struct {
 	Created int64                            `json:"created" api:"required"`
 	Data    IdentityResolvedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityResolved `json:"type" api:"required"`
+	Type constant.IdentityResolved `json:"type" default:"identity.resolved"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -429,7 +429,7 @@ type IdentityQualifiedWebhookEvent struct {
 	Created int64                             `json:"created" api:"required"`
 	Data    IdentityQualifiedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityQualified `json:"type" api:"required"`
+	Type constant.IdentityQualified `json:"type" default:"identity.qualified"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -781,7 +781,7 @@ type IdentityEnrichedWebhookEvent struct {
 	Created int64                            `json:"created" api:"required"`
 	Data    IdentityEnrichedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityEnriched `json:"type" api:"required"`
+	Type constant.IdentityEnriched `json:"type" default:"identity.enriched"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -1943,7 +1943,7 @@ type IdentityValidatedWebhookEvent struct {
 	Created int64                             `json:"created" api:"required"`
 	Data    IdentityValidatedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentityValidated `json:"type" api:"required"`
+	Type constant.IdentityValidated `json:"type" default:"identity.validated"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
@@ -2229,7 +2229,7 @@ type IdentitySessionFinalizedWebhookEvent struct {
 	Created int64                                    `json:"created" api:"required"`
 	Data    IdentitySessionFinalizedWebhookEventData `json:"data" api:"required"`
 	// Event type identifier
-	Type constant.IdentitySessionFinalized `json:"type" api:"required"`
+	Type constant.IdentitySessionFinalized `json:"type" default:"identity.session.finalized"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
