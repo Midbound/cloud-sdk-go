@@ -14,6 +14,8 @@ import (
 	"github.com/Midbound/cloud-sdk-go/packages/respjson"
 )
 
+// Health check endpoints
+//
 // HealthService contains methods and other services that help with interacting
 // with the midbound-cloud API.
 //
@@ -38,18 +40,18 @@ func (r *HealthService) Check(ctx context.Context, opts ...option.RequestOption)
 	opts = slices.Concat(r.Options, opts)
 	path := "health"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type HealthCheckResponse struct {
 	// Service health status
 	//
 	// Any of "ok", "degraded", "unhealthy".
-	Status HealthCheckResponseStatus `json:"status,required"`
+	Status HealthCheckResponseStatus `json:"status" api:"required"`
 	// Current server timestamp (ISO)
-	Timestamp time.Time `json:"timestamp,required" format:"date-time"`
+	Timestamp time.Time `json:"timestamp" api:"required" format:"date-time"`
 	// API version
-	Version string `json:"version,required"`
+	Version string `json:"version" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Status      respjson.Field
