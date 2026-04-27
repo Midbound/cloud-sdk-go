@@ -117,7 +117,7 @@ func (r *IdentityResolvedWebhookEventData) UnmarshalJSON(data []byte) error {
 
 type IdentityResolvedWebhookEventDataAttribution struct {
 	PixelID string `json:"pixelId" api:"required"`
-	// Any of "jNNdd", "OMzN4".
+	// Any of "jNNdd", "OMzN4", "z3xL1".
 	Prid      string `json:"prid" api:"required"`
 	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
@@ -469,7 +469,7 @@ func (r *IdentityQualifiedWebhookEventData) UnmarshalJSON(data []byte) error {
 
 type IdentityQualifiedWebhookEventDataAttribution struct {
 	PixelID string `json:"pixelId" api:"required"`
-	// Any of "jNNdd", "OMzN4".
+	// Any of "jNNdd", "OMzN4", "z3xL1".
 	Prid      string `json:"prid" api:"required"`
 	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
@@ -825,7 +825,7 @@ func (r *IdentityEnrichedWebhookEventData) UnmarshalJSON(data []byte) error {
 
 type IdentityEnrichedWebhookEventDataAttribution struct {
 	PixelID string `json:"pixelId" api:"required"`
-	// Any of "jNNdd", "OMzN4".
+	// Any of "jNNdd", "OMzN4", "z3xL1".
 	Prid      string `json:"prid" api:"required"`
 	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
@@ -1983,7 +1983,7 @@ func (r *IdentityValidatedWebhookEventData) UnmarshalJSON(data []byte) error {
 
 type IdentityValidatedWebhookEventDataAttribution struct {
 	PixelID string `json:"pixelId" api:"required"`
-	// Any of "jNNdd", "OMzN4".
+	// Any of "jNNdd", "OMzN4", "z3xL1".
 	Prid      string `json:"prid" api:"required"`
 	SessionID string `json:"sessionId" api:"required"`
 	// Any of "website".
