@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.2.0 (2026-05-14)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/Midbound/cloud-sdk-go/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** api update ([de5730c](https://github.com/Midbound/cloud-sdk-go/commit/de5730cc77e3e69dced9277380748fee5e1efc20))
+* **client:** optimize json encoder for internal types ([d86403d](https://github.com/Midbound/cloud-sdk-go/commit/d86403de92e28eca2a31e7ab770e8d753ca54608))
+* **go:** add default http client with timeout ([7418809](https://github.com/Midbound/cloud-sdk-go/commit/7418809371c83d4613d07c9841a6403ac9d168eb))
+* support setting headers via env ([b3ad6e3](https://github.com/Midbound/cloud-sdk-go/commit/b3ad6e32a6a19e5ec79b03c24e533dd613628549))
+
+
+### Bug Fixes
+
+* **go:** avoid panic when http.DefaultTransport is wrapped ([7fe6f9b](https://github.com/Midbound/cloud-sdk-go/commit/7fe6f9b6454380b42880e99756228f344bf71267))
+
+
+### Chores
+
+* avoid embedding reflect.Type for dead code elimination ([5e89840](https://github.com/Midbound/cloud-sdk-go/commit/5e898402d39bf1f48c86340c620936d56cbf7351))
+* **internal:** codegen related update ([2116655](https://github.com/Midbound/cloud-sdk-go/commit/21166554bbde7006be50b5cceb14aab16d3ddafd))
+* **internal:** codegen related update ([a5d9d17](https://github.com/Midbound/cloud-sdk-go/commit/a5d9d1722bb6eb38356df35717520bfa7b754846))
+* **internal:** codegen related update ([4ecee84](https://github.com/Midbound/cloud-sdk-go/commit/4ecee8483fec02f23d06a9c6543541166cecaa3e))
+* **internal:** more robust bootstrap script ([a1c1736](https://github.com/Midbound/cloud-sdk-go/commit/a1c1736299175cdd535fafd4a4863d37c94b3e04))
+* redact api-key headers in debug logs ([a4ee800](https://github.com/Midbound/cloud-sdk-go/commit/a4ee800142f4f6301b4e817769e0990874095b0c))
+
 ## 0.1.0 (2026-03-28)
 
 Full Changelog: [v0.0.2...v0.1.0](https://github.com/Midbound/cloud-sdk-go/compare/v0.0.2...v0.1.0)
